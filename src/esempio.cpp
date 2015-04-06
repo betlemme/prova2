@@ -7,6 +7,7 @@ using namespace std;
 
 main()
 {
+    //commentocommentocommento
 
     // holds images and labels
     vector<Mat> images;
