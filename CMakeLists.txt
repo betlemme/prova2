@@ -24,6 +24,12 @@ add_executable(esempio
 
 target_link_libraries(esempio ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 
+add_executable(face
+        src/face.cpp
+        )
+
+target_link_libraries(face ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
+
 
 
 
