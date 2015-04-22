@@ -8,6 +8,8 @@ using namespace std;
 main()
 {
     //commentocommentocommento
+    //22 aprile
+
 
     // holds images and labels
     vector<Mat> images;
