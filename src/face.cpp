@@ -54,8 +54,9 @@ void equalizeLeftAndRightHalves(Mat &faceImg)
     }//end y loop
 }
 
-int main()
+Mat normalize(Mat source)
 {
+    Mat out;
     char const * frontaleLBP = "/home/enrico/opencv-2.4.9/data/lbpcascades/lbpcascade_frontalface.xml";
     char const * frontaleHAAR = "/home/enrico/opencv-2.4.9/data/haarcascades/haarcascade_frontalface_default.xml";
     char const * profilo ="/home/enrico/opencv-2.4.9/data/haarcascades/haarcascade_profileface.xml";
@@ -75,7 +76,8 @@ int main()
 
 
     //carico l'img in b/n:
-    Mat img = imread("000_00_image.png", CV_LOAD_IMAGE_GRAYSCALE);
+    Mat img = source;
+    //Mat img = imread("000_00_image.png", CV_LOAD_IMAGE_GRAYSCALE);
     namedWindow( "Display window", WINDOW_AUTOSIZE );
     imshow( "Display window", img );
     waitKey(0);
@@ -117,7 +119,7 @@ int main()
     {
         cout << "nessuna faccia trovata" << endl;
 
-        return -1;
+        return out;
     }
     //namedWindow( "Display window4", WINDOW_AUTOSIZE );
     imshow( "Display window4", equalizedImg(faces[0]) );
@@ -285,5 +287,17 @@ warpAffine() function, which is a single operation that will do four things:
 
 
 
+    return filtered;
+}
+
+int main()
+{
+    Mat img = imread("000_00_image.png", CV_LOAD_IMAGE_GRAYSCALE);
+    Mat out = normalize(img);
+
+    cout << "evviva!" <<endl;
+    imshow("out", out);
+    waitKey(0);
     return 0;
 }
+
