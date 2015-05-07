@@ -54,15 +54,26 @@ void equalizeLeftAndRightHalves(Mat &faceImg)
     }//end y loop
 }
 
-Mat normalize(Mat source)
+Mat normalize(Mat source, int descrittore)
 {
     Mat out;
+    //carico l'img in b/n (gli passo già una img in b/n):
+    Mat img = source;
+
     char const * frontaleLBP = "/home/enrico/opencv-2.4.9/data/lbpcascades/lbpcascade_frontalface.xml";
-    char const * frontaleHAAR = "/home/enrico/opencv-2.4.9/data/haarcascades/haarcascade_frontalface_default.xml";
+    //char const * frontaleHAAR = "/home/enrico/opencv-2.4.9/data/haarcascades/haarcascade_frontalface_default.xml";
     char const * profilo ="/home/enrico/opencv-2.4.9/data/haarcascades/haarcascade_profileface.xml";
 
-    //carico il descrittore pre il face detector (haar: /home/enrico/opencv-2.4.9/data/haarcascades/haarcascade_frontalface_default.xml)
-    char const * faceCascadeFilename = frontaleLBP;
+    //carico il descrittore pre il face detector ( 1 -> frontale , 2 -> profilo)
+    char const * faceCascadeFilename;
+    if(descrittore == 1)
+    {
+        faceCascadeFilename = frontaleLBP;
+    }
+    else
+    {
+        faceCascadeFilename = profilo;
+    }
     CascadeClassifier faceDetector;
     try {
         faceDetector.load(faceCascadeFilename);
@@ -75,12 +86,17 @@ Mat normalize(Mat source)
     cout << "descrittore caricato: " << faceCascadeFilename <<endl;
 
 
-    //carico l'img in b/n:
-    Mat img = source;
-    //Mat img = imread("000_00_image.png", CV_LOAD_IMAGE_GRAYSCALE);
-    namedWindow( "Display window", WINDOW_AUTOSIZE );
+
+
+
+
+/*
+    namedWindow( "Display window", WINDOW_AUTOSIZE );           //per debug
     imshow( "Display window", img );
     waitKey(0);
+*/
+
+
 /*
     //ora la scalo per ragioni di prestazioni:                  //sta parte per ora non la implemento
     const int DETECTION_WIDTH = 320;
@@ -121,112 +137,118 @@ Mat normalize(Mat source)
 
         return out;
     }
+
+/*                                                                      //per debug
     //namedWindow( "Display window4", WINDOW_AUTOSIZE );
     imshow( "Display window4", equalizedImg(faces[0]) );
     waitKey(0);
+*/
 
 
     rectangle(equalizedImg,faces[0],Scalar( 0, 55, 255 ), +1, 4 );
+
+/*                                                                      //per debug
     imshow( "Display window5", equalizedImg );
     waitKey(0);
+*/
     
-    
-    //ora ho la regione della faccia. trovo gli occhi
-    
-    //carico il descrittore pre l'eye detector
-    char const * eyeCascadeFilename = "/home/enrico/opencv-2.4.9/data/haarcascades/haarcascade_eye.xml";
-    CascadeClassifier eyeDetector;
-    try {
-        eyeDetector.load(eyeCascadeFilename);
-    } catch (cv::Exception e) {}
-    if ( eyeDetector.empty() ) {
-        cerr << "ERROR: Couldn't load eye Detector (";
-        cerr << eyeCascadeFilename << ")!" << endl;
-        exit(1);
-    }
-    cout << "descrittore caricato: " << eyeCascadeFilename <<endl;
-
-    //trovo la regione della faccia in cui cercare l'occhio per restringere il campo di ricerca (parametri empirici):
-    Mat face = equalizedImg(faces[0]);
-
-    float EYE_SX = 0.16;
-    float EYE_SY = 0.26;
-    float EYE_SW = 0.30;
-    float EYE_SH = 0.28;
-
-
-    int leftX = cvRound(face.cols * EYE_SX);
-    int topY = cvRound(face.rows * EYE_SY);
-    int widthX = cvRound(face.cols * EYE_SW);
-    int heightY = cvRound(face.rows * EYE_SH);
-    int rightX = cvRound(face.cols * (1.0-EYE_SX-EYE_SW));
-
-    Mat topLeftOfFace = face(Rect(leftX, topY, widthX, heightY));
-    Mat topRightOfFace = face(Rect(rightX, topY, widthX, heightY));
-
-   //    imshow( "Display window6", topLeftOfFace );
-   //    imshow( "Display window6", topRightOfFace );
-   //    waitKey(0);
-
-    Rect leftEyeRect, rightEyeRect; //conterranno le regioni degli occhi
-
-    //avvio la ricerca (sinistro):
-    int flags2 = CASCADE_FIND_BIGGEST_OBJECT;    //cerco una sola faccia
-    Size minFeatureSize2(20, 20);                //size minima in pixel della faccia
-    float searchScaleFactor2 = 1.3f;             //su quante scale cercare (1.1 oppure 1.2) piu alto è piu è veloce, ma trova meno facce
-    int minNeighbors2 = 4;                       //Reliability vs many faces
-    std::vector<Rect> eyesL;                    //param di uscita, circonda l'occhio
-    std::vector<Rect> eyesR;                    //param di uscita, circonda l'occhio
-    eyeDetector.detectMultiScale(topLeftOfFace, eyesL, searchScaleFactor2, minNeighbors2, flags2, minFeatureSize2);
-    eyeDetector.detectMultiScale(topRightOfFace, eyesR, searchScaleFactor2, minNeighbors2, flags2, minFeatureSize2);
-
-    leftEyeRect = eyesL[0];
-    rightEyeRect = eyesR[0];
-
-    Point leftEye, rightEye;
-
-    //debug:
-    if (eyesL.size() < 1)
+    //ora ho la regione della faccia. trovo gli occhi (solo se descrittore == 1)
+    if (descrittore == 1)
     {
-        cout << "nessuna occhio L trovata" << endl;
+        //carico il descrittore pre l'eye detector
+        char const * eyeCascadeFilename = "/home/enrico/opencv-2.4.9/data/haarcascades/haarcascade_eye.xml";
+        CascadeClassifier eyeDetector;
+        try {
+            eyeDetector.load(eyeCascadeFilename);
+        } catch (cv::Exception e) {}
+        if ( eyeDetector.empty() ) {
+            cerr << "ERROR: Couldn't load eye Detector (";
+            cerr << eyeCascadeFilename << ")!" << endl;
+            exit(1);
+        }
+        cout << "descrittore caricato: " << eyeCascadeFilename <<endl;
 
-    }
+        //trovo la regione della faccia in cui cercare l'occhio per restringere il campo di ricerca (parametri empirici):
+        Mat face = equalizedImg(faces[0]);
 
-    if (eyesR.size() < 1)
-    {
-        cout << "nessuna occhio L trovata" << endl;
+        float EYE_SX = 0.16;
+        float EYE_SY = 0.26;
+        float EYE_SW = 0.30;
+        float EYE_SH = 0.28;
 
-    }
 
-    if (leftEyeRect.width > 0) //se ho trovato l'occhio
-    {
-        leftEyeRect.x += leftX; // Adjust the left-eye rectangle because the face border was removed.
-        leftEyeRect.y += topY;
-        leftEye = Point(leftEyeRect.x + leftEyeRect.width/2, leftEyeRect.y + leftEyeRect.height/2);
-    }
-    else {
-        leftEye = Point(-1, -1); // Return an invalid point
-    }
+        int leftX = cvRound(face.cols * EYE_SX);
+        int topY = cvRound(face.rows * EYE_SY);
+        int widthX = cvRound(face.cols * EYE_SW);
+        int heightY = cvRound(face.rows * EYE_SH);
+        int rightX = cvRound(face.cols * (1.0-EYE_SX-EYE_SW));
 
-    if (rightEyeRect.width > 0)
-    { // Check if the eye was detected.
-        rightEyeRect.x += rightX; // Adjust the right-eye rectangle, since it starts on the right side of the image.
-        rightEyeRect.y += topY; // Adjust the right-eye rectangle because the face border was removed.
-        rightEye = Point(rightEyeRect.x + rightEyeRect.width/2, rightEyeRect.y + rightEyeRect.height/2);
-    }
-    else {
-        rightEye = Point(-1, -1); // Return an invalid point
-    }
+        Mat topLeftOfFace = face(Rect(leftX, topY, widthX, heightY));
+        Mat topRightOfFace = face(Rect(rightX, topY, widthX, heightY));
 
-    circle( face, leftEye, 16.0, Scalar( 0, 0, 255 ), 1, 8 );
-    circle( face, rightEye, 16.0, Scalar( 0, 0, 255 ), 1, 8 );
-    
-    imshow( "Display window5", face );
-    //  imshow( "Display window5", equalizedImg );  per mostrare i rettangli nella foto originale
+        //    imshow( "Display window6", topLeftOfFace );
+        //    imshow( "Display window6", topRightOfFace );
+        //    waitKey(0);
 
-    waitKey(0);
+        Rect leftEyeRect, rightEyeRect; //conterranno le regioni degli occhi
 
-/*
+        //avvio la ricerca (sinistro):
+        int flags2 = CASCADE_FIND_BIGGEST_OBJECT;    //cerco una sola faccia
+        Size minFeatureSize2(20, 20);                //size minima in pixel della faccia
+        float searchScaleFactor2 = 1.3f;             //su quante scale cercare (1.1 oppure 1.2) piu alto è piu è veloce, ma trova meno facce
+        int minNeighbors2 = 4;                       //Reliability vs many faces
+        std::vector<Rect> eyesL;                    //param di uscita, circonda l'occhio
+        std::vector<Rect> eyesR;                    //param di uscita, circonda l'occhio
+        eyeDetector.detectMultiScale(topLeftOfFace, eyesL, searchScaleFactor2, minNeighbors2, flags2, minFeatureSize2);
+        eyeDetector.detectMultiScale(topRightOfFace, eyesR, searchScaleFactor2, minNeighbors2, flags2, minFeatureSize2);
+
+        leftEyeRect = eyesL[0];
+        rightEyeRect = eyesR[0];
+
+        Point leftEye, rightEye;
+
+        //debug:
+        if (eyesL.size() < 1)
+        {
+            cout << "nessuna occhio L trovata" << endl;
+
+        }
+
+        if (eyesR.size() < 1)
+        {
+            cout << "nessuna occhio L trovata" << endl;
+
+        }
+
+        if (leftEyeRect.width > 0) //se ho trovato l'occhio
+        {
+            leftEyeRect.x += leftX; // Adjust the left-eye rectangle because the face border was removed.
+            leftEyeRect.y += topY;
+            leftEye = Point(leftEyeRect.x + leftEyeRect.width/2, leftEyeRect.y + leftEyeRect.height/2);
+        }
+        else {
+            leftEye = Point(-1, -1); // Return an invalid point
+        }
+
+        if (rightEyeRect.width > 0)
+        { // Check if the eye was detected.
+            rightEyeRect.x += rightX; // Adjust the right-eye rectangle, since it starts on the right side of the image.
+            rightEyeRect.y += topY; // Adjust the right-eye rectangle because the face border was removed.
+            rightEye = Point(rightEyeRect.x + rightEyeRect.width/2, rightEyeRect.y + rightEyeRect.height/2);
+        }
+        else {
+            rightEye = Point(-1, -1); // Return an invalid point
+        }
+
+        circle( face, leftEye, 16.0, Scalar( 0, 0, 255 ), 1, 8 );
+        circle( face, rightEye, 16.0, Scalar( 0, 0, 255 ), 1, 8 );
+
+        imshow( "Display window5", face );
+        //  imshow( "Display window5", equalizedImg );  per mostrare i rettangli nella foto originale
+
+        waitKey(0);
+
+        /*
 To have better alignment we will use eye detection to align the face so the positions of the two detected
 eyes line up perfectly in desired positions. We will do the geometrical transformation using the
 warpAffine() function, which is a single operation that will do four things:
@@ -237,67 +259,97 @@ warpAffine() function, which is a single operation that will do four things:
  forehead, ears, and chin.
 */
 
-    // trovo il centro tra i 2 occhi:
-    Point2f eyesCenter;
-    eyesCenter.x = (leftEye.x + rightEye.x) * 0.5f;
-    eyesCenter.y = (leftEye.y + rightEye.y) * 0.5f;
+        // trovo il centro tra i 2 occhi:
+        Point2f eyesCenter;
+        eyesCenter.x = (leftEye.x + rightEye.x) * 0.5f;
+        eyesCenter.y = (leftEye.y + rightEye.y) * 0.5f;
 
-    // ora trovo l'angolo di inclinazione del segmento che ha per estremi gli occhi
-    double dy = (rightEye.y - leftEye.y);
-    double dx = (rightEye.x - leftEye.x);
-    double len = sqrt(dx*dx + dy*dy);
-    // Convert Radians to Degrees.
-    double angle = atan2(dy, dx) * 180.0/CV_PI;
+        // ora trovo l'angolo di inclinazione del segmento che ha per estremi gli occhi
+        double dy = (rightEye.y - leftEye.y);
+        double dx = (rightEye.x - leftEye.x);
+        double len = sqrt(dx*dx + dy*dy);
+        // Convert Radians to Degrees.
+        double angle = atan2(dy, dx) * 180.0/CV_PI;
 
-    // Hand measurements shown that the left eye center should ideally be at roughly (0.19, 0.14) of a scaled face image.
-    const double DESIRED_LEFT_EYE_X = 0.16;
-    const double DESIRED_LEFT_EYE_Y = 0.14;
-    const int desiredFaceWidth = 70; // DESIRED_FACE_WIDTH
-    const int desiredFaceHeight = 70;//DESIRED_FACE_HEIGHT
-    const double DESIRED_RIGHT_EYE_X = (1.0f - DESIRED_LEFT_EYE_X);
-    // Get the amount we need to scale the image to be the desired fixed size we want.
-    double desiredLen = (DESIRED_RIGHT_EYE_X - DESIRED_LEFT_EYE_X) * desiredFaceWidth;
-    double scale = desiredLen / len;
+        // Hand measurements shown that the left eye center should ideally be at roughly (0.19, 0.14) of a scaled face image.
+        const double DESIRED_LEFT_EYE_X = 0.16;
+        const double DESIRED_LEFT_EYE_Y = 0.14;
+        const int desiredFaceWidth = 70; // DESIRED_FACE_WIDTH
+        const int desiredFaceHeight = 70;//DESIRED_FACE_HEIGHT
+        const double DESIRED_RIGHT_EYE_X = (1.0f - DESIRED_LEFT_EYE_X);
+        // Get the amount we need to scale the image to be the desired fixed size we want.
+        double desiredLen = (DESIRED_RIGHT_EYE_X - DESIRED_LEFT_EYE_X) * desiredFaceWidth;
+        double scale = desiredLen / len;
 
-    // Get the transformation matrix for rotating and scaling the face to the desired angle & size.
-   Mat rot_mat = getRotationMatrix2D(eyesCenter, angle, scale);
-   // Shift the center of the eyes to be the desired center between the eyes.
-   rot_mat.at<double>(0, 2) += desiredFaceWidth * 0.5f - eyesCenter.x;
-   rot_mat.at<double>(1, 2) += desiredFaceHeight * DESIRED_LEFT_EYE_Y - eyesCenter.y;
+        // Get the transformation matrix for rotating and scaling the face to the desired angle & size.
+        Mat rot_mat = getRotationMatrix2D(eyesCenter, angle, scale);
+        // Shift the center of the eyes to be the desired center between the eyes.
+        rot_mat.at<double>(0, 2) += desiredFaceWidth * 0.5f - eyesCenter.x;
+        rot_mat.at<double>(1, 2) += desiredFaceHeight * DESIRED_LEFT_EYE_Y - eyesCenter.y;
 
-   // Rotate and scale and translate the image to the desired angle & size & position!
-   // Note that we use 'w' for the height instead of 'h', because the input face has 1:1 aspect ratio.
-   Mat warped = Mat(desiredFaceHeight, desiredFaceWidth, CV_8U, Scalar(128)); // Clear the output image to a default grey.
-   warpAffine(img(faces[0]), warped, rot_mat, warped.size());
+        // Rotate and scale and translate the image to the desired angle & size & position!
+        // Note that we use 'w' for the height instead of 'h', because the input face has 1:1 aspect ratio.
+        Mat warped = Mat(desiredFaceHeight, desiredFaceWidth, CV_8U, Scalar(128)); // Clear the output image to a default grey.
+        warpAffine(img(faces[0]), warped, rot_mat, warped.size());
 
-   equalizeLeftAndRightHalves(warped);
+        equalizeLeftAndRightHalves(warped);
 
+/*                                                  //per debug
    imshow("warped", warped);
    waitKey(0);
+*/
 
-   // Use the "Bilateral Filter" to reduce pixel noise by smoothing the image, but keeping the sharp edges in the face.
-   Mat filtered = Mat(warped.size(), CV_8U);
-   bilateralFilter(warped, filtered, 0, 20.0, 2.0);
+        // Use the "Bilateral Filter" to reduce pixel noise by smoothing the image, but keeping the sharp edges in the face.
+        Mat filtered = Mat(warped.size(), CV_8U);
+        bilateralFilter(warped, filtered, 0, 20.0, 2.0);
 
+
+/*                                                  //per debug
    imshow("filtered", filtered);
    waitKey(0);
-
-   imwrite( "faceFiltered.jpg", filtered );
-
+*/
 
 
+        //imwrite( "faceFiltered.jpg", filtered );
 
-    return filtered;
+
+
+
+        return filtered;
+    }
+
+    else
+    {
+        Size size(70,70);//the dst image size,e.g.100x100
+        Mat dst = Mat(desiredFaceHeight, desiredFaceWidth, CV_8U, Scalar(128)); // Clear the output image to a default grey.;//dst image
+        Mat src;//src image
+        resize(src,dst,size);//resize image
+
+    }
 }
 
 int main()
 {
-    Mat img = imread("000_00_image.png", CV_LOAD_IMAGE_GRAYSCALE);
-    Mat out = normalize(img);
+    //00: frontale
+    Mat img00 = imread("000_02_image.png", CV_LOAD_IMAGE_GRAYSCALE);
+    Mat out00 = normalize(img00,2);
 
     cout << "evviva!" <<endl;
-    imshow("out", out);
+    imshow("out", out00);
     waitKey(0);
+
+
+/*
+    //01: dx
+    Mat img01 = imread("000_01_image.png", CV_LOAD_IMAGE_GRAYSCALE);
+    Mat out01 = normalize(img01,2);
+
+    cout << "evviva! 02" <<endl;
+    imshow("out01", out01);
+    waitKey(0);
+*/
+
+
     return 0;
 }
 
