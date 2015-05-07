@@ -61,14 +61,14 @@ Mat normalize(Mat source, int descrittore)
     Mat img = source;
 
     char const * frontaleLBP = "/home/enrico/opencv-2.4.9/data/lbpcascades/lbpcascade_frontalface.xml";
-    //char const * frontaleHAAR = "/home/enrico/opencv-2.4.9/data/haarcascades/haarcascade_frontalface_default.xml";
+    char const * frontaleHAAR = "/home/enrico/opencv-2.4.9/data/haarcascades/haarcascade_frontalface_default.xml";
     char const * profilo ="/home/enrico/opencv-2.4.9/data/haarcascades/haarcascade_profileface.xml";
 
     //carico il descrittore pre il face detector ( 1 -> frontale , 2 -> profilo)
     char const * faceCascadeFilename;
     if(descrittore == 1)
     {
-        faceCascadeFilename = frontaleLBP;
+        faceCascadeFilename = frontaleHAAR;
     }
     else
     {
@@ -90,11 +90,11 @@ Mat normalize(Mat source, int descrittore)
 
 
 
-/*
+
     namedWindow( "Display window", WINDOW_AUTOSIZE );           //per debug
     imshow( "Display window", img );
     waitKey(0);
-*/
+
 
 
 /*
@@ -138,19 +138,19 @@ Mat normalize(Mat source, int descrittore)
         return out;
     }
 
-/*                                                                      //per debug
+                                                                     //per debug
     //namedWindow( "Display window4", WINDOW_AUTOSIZE );
     imshow( "Display window4", equalizedImg(faces[0]) );
     waitKey(0);
-*/
+
 
 
     rectangle(equalizedImg,faces[0],Scalar( 0, 55, 255 ), +1, 4 );
 
-/*                                                                      //per debug
+                                                                    //per debug
     imshow( "Display window5", equalizedImg );
     waitKey(0);
-*/
+
     
     //ora ho la regione della faccia. trovo gli occhi (solo se descrittore == 1)
     if (descrittore == 1)
@@ -186,9 +186,10 @@ Mat normalize(Mat source, int descrittore)
         Mat topLeftOfFace = face(Rect(leftX, topY, widthX, heightY));
         Mat topRightOfFace = face(Rect(rightX, topY, widthX, heightY));
 
-        //    imshow( "Display window6", topLeftOfFace );
-        //    imshow( "Display window6", topRightOfFace );
-        //    waitKey(0);
+           imshow( "Display window6", topLeftOfFace );
+           waitKey(0);
+           imshow( "Display window6", topRightOfFace );
+           waitKey(0);
 
         Rect leftEyeRect, rightEyeRect; //conterranno le regioni degli occhi
 
@@ -202,23 +203,34 @@ Mat normalize(Mat source, int descrittore)
         eyeDetector.detectMultiScale(topLeftOfFace, eyesL, searchScaleFactor2, minNeighbors2, flags2, minFeatureSize2);
         eyeDetector.detectMultiScale(topRightOfFace, eyesR, searchScaleFactor2, minNeighbors2, flags2, minFeatureSize2);
 
-        leftEyeRect = eyesL[0];
-        rightEyeRect = eyesR[0];
-
-        Point leftEye, rightEye;
-
         //debug:
         if (eyesL.size() < 1)
         {
             cout << "nessuna occhio L trovata" << endl;
 
         }
+        else leftEyeRect = eyesL[0];
 
         if (eyesR.size() < 1)
         {
             cout << "nessuna occhio L trovata" << endl;
 
         }
+        else rightEyeRect = eyesR[0];
+
+        if (eyesL.size() < 1 || eyesR.size() < 1)  //se non trovo gli occhi restituisco solo il rect del face detection scalato
+        {
+            Size size(70,70);//the dst image size,e.g.100x100
+            Mat dst = Mat(70, 70, CV_8U, Scalar(128)); // Clear the output image to a default grey.;//dst image
+            Mat src = equalizedImg(faces[0]);//src image
+            resize(src,dst,size);//resize image
+
+            return dst;
+        }
+
+        Point leftEye, rightEye;
+
+
 
         if (leftEyeRect.width > 0) //se ho trovato l'occhio
         {
@@ -294,10 +306,10 @@ warpAffine() function, which is a single operation that will do four things:
 
         equalizeLeftAndRightHalves(warped);
 
-/*                                                  //per debug
+                                                 //per debug
    imshow("warped", warped);
    waitKey(0);
-*/
+
 
         // Use the "Bilateral Filter" to reduce pixel noise by smoothing the image, but keeping the sharp edges in the face.
         Mat filtered = Mat(warped.size(), CV_8U);
@@ -321,33 +333,109 @@ warpAffine() function, which is a single operation that will do four things:
     else
     {
         Size size(70,70);//the dst image size,e.g.100x100
-        Mat dst = Mat(desiredFaceHeight, desiredFaceWidth, CV_8U, Scalar(128)); // Clear the output image to a default grey.;//dst image
-        Mat src;//src image
+        Mat dst = Mat(70, 70, CV_8U, Scalar(128)); // Clear the output image to a default grey.;//dst image
+        Mat src = equalizedImg(faces[0]);//src image
         resize(src,dst,size);//resize image
+
+        return dst;
 
     }
 }
 
-int main()
+int test()
 {
     //00: frontale
-    Mat img00 = imread("000_02_image.png", CV_LOAD_IMAGE_GRAYSCALE);
-    Mat out00 = normalize(img00,2);
+    cout <<"00: frontale"<< endl;
+    Mat img00 = imread("000_00_image.png", CV_LOAD_IMAGE_GRAYSCALE);
+    Mat out00 = normalize(img00,1);
 
-    cout << "evviva!" <<endl;
-    imshow("out", out00);
-    waitKey(0);
+    if (out00.cols <1)
+    {
+        cout <<"eh la vita è dura"<< endl;
 
+    }
+    else
+    {
+        cout << "evviva!" <<endl;
+        imshow("out", out00);
+        waitKey(0);
+    }
 
-/*
     //01: dx
+    cout <<"01: dx"<< endl;
     Mat img01 = imread("000_01_image.png", CV_LOAD_IMAGE_GRAYSCALE);
     Mat out01 = normalize(img01,2);
 
-    cout << "evviva! 02" <<endl;
-    imshow("out01", out01);
-    waitKey(0);
-*/
+    if (out01.cols <1)
+    {
+        cout <<"eh la vita è dura"<< endl;
+
+    }
+    else
+    {
+        cout << "evviva!" << endl;
+        imshow("out01", out01);
+        waitKey(0);
+    }
+
+    //02: sx
+    cout <<"02: sx"<< endl;
+    Mat img02 = imread("000_02_image.png", CV_LOAD_IMAGE_GRAYSCALE);
+    Mat out02 = normalize(img02,2);
+
+    if (out02.cols <1)
+    {
+        cout <<"eh la vita è dura"<< endl;
+
+    }
+    else
+    {
+        cout << "evviva!" << endl;
+        imshow("out02", out02);
+        waitKey(0);
+    }
+
+    //03: su
+    cout <<"03: su"<< endl;
+    Mat img03 = imread("000_03_image.png", CV_LOAD_IMAGE_GRAYSCALE);
+    Mat out03 = normalize(img03,1);
+
+    if (out03.cols <1)
+    {
+        cout <<"eh la vita è dura"<< endl;
+
+    }
+    else
+    {
+        cout << "evviva!" << endl;
+        imshow("out03", out03);
+        waitKey(0);
+    }
+
+
+    return 0;
+}
+
+int main()
+{
+
+    cout <<"ajeje prova le foto"<< endl;
+    Mat img = imread("014_08_image.png", CV_LOAD_IMAGE_GRAYSCALE);
+    Mat out = normalize(img,1);
+
+    if (out.cols <1)
+    {
+        cout <<"eh la vita è dura"<< endl;
+
+    }
+    else
+    {
+        cout << "evviva!" <<endl;
+        imshow("out", out);
+        waitKey(0);
+    }
+
+//    test();
 
 
     return 0;
