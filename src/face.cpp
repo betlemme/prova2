@@ -1,9 +1,17 @@
+/*
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <iostream>
-
+#include <string>
+#include <sstream>
+Mat
 using namespace cv;
 using namespace std;
+
+Mat normalize(Mat source, int descrittore);
+*/
+
+#include "face.h"
 
 // Histogram Equalize seperately for the left and right sides of the face.
 void equalizeLeftAndRightHalves(Mat &faceImg)
@@ -86,44 +94,17 @@ Mat normalize(Mat source, int descrittore)
     cout << "descrittore caricato: " << faceCascadeFilename <<endl;
 
 
-
-
-
-
-
     namedWindow( "Display window", WINDOW_AUTOSIZE );           //per debug
     imshow( "Display window", img );
     waitKey(0);
 
 
-
-/*
-    //ora la scalo per ragioni di prestazioni:                  //sta parte per ora non la implemento
-    const int DETECTION_WIDTH = 320;
-    // Possibly shrink the image, to run much faster.
-    Mat smallImg;
-    float scale = img.cols / (float) DETECTION_WIDTH;
-    if (img.cols > DETECTION_WIDTH) {
-        // Shrink the image while keeping the same aspect ratio.
-        int scaledHeight = cvRound(img.rows / scale);
-        resize(img, smallImg, Size(DETECTION_WIDTH, scaledHeight));
-    }
-    else {
-        // Access the input directly since it is already small.
-        smallImg = img;
-    }
-    namedWindow( "Display window2", WINDOW_AUTOSIZE );
-    imshow( "Display window2", smallImg );
-    waitKey(0);
-*/
-
-
-    // faccio equalizeHist per omogeneizzare il contrasto e la luminosità:
+    //equalizeHist per omogeneizzare il contrasto e la luminosità:
     Mat equalizedImg;
     equalizeHist(img, equalizedImg);
 
 
-    //ora posso usare detectMultiScale() per trovare la faccia nell'immagine:
+    // detectMultiScale() per trovare la faccia nell'immagine:
     int flags = CASCADE_FIND_BIGGEST_OBJECT;    //cerco una sola faccia
     Size minFeatureSize(80, 80);                //size minima in pixel della faccia
     float searchScaleFactor = 1.3f;             //su quante scale cercare (1.1 oppure 1.2) piu alto è piu è veloce, ma trova meno facce
@@ -260,15 +241,15 @@ Mat normalize(Mat source, int descrittore)
 
         waitKey(0);
 
-        /*
-To have better alignment we will use eye detection to align the face so the positions of the two detected
-eyes line up perfectly in desired positions. We will do the geometrical transformation using the
-warpAffine() function, which is a single operation that will do four things:
--Rotate the face so that the two eyes are horizontal.
--Scale the face so that the distance between the two eyes is always the same.
--Translate the face so that the eyes are always centered horizontally and at a desired height.
--Crop the outer parts of the face, since we want to crop away the image background, hair,
- forehead, ears, and chin.
+/*
+        To have better alignment we will use eye detection to align the face so the positions of the two detected
+        eyes line up perfectly in desired positions. We will do the geometrical transformation using the
+        warpAffine() function, which is a single operation that will do four things:
+        -Rotate the face so that the two eyes are horizontal.
+        -Scale the face so that the distance between the two eyes is always the same.
+        -Translate the face so that the eyes are always centered horizontally and at a desired height.
+        -Crop the outer parts of the face, since we want to crop away the image background, hair,
+         forehead, ears, and chin.
 */
 
         // trovo il centro tra i 2 occhi:
@@ -413,12 +394,13 @@ int test()
     }
 
 
+
     return 0;
 }
 
-int main()
+int mainmain()
 {
-
+/*
     cout <<"ajeje prova le foto"<< endl;
     Mat img = imread("014_08_image.png", CV_LOAD_IMAGE_GRAYSCALE);
     Mat out = normalize(img,1);
@@ -430,13 +412,131 @@ int main()
     }
     else
     {
-        cout << "evviva!" <<endl;
+        cout << "evviva!" <<endl;//
         imshow("out", out);
         waitKey(0);
     }
+*/
+ //  test();
 
-//    test();
 
+    ///////////////////////////////////////////////////////////////////////////////
+/*
+    Mat img, out;
+    string str00("000_00");
+    string str0("000_0");
+    string png("_image.png");
+    string path;
+    stringstream ss;
+
+    for (char i = 0; i < 6; i++)
+    {
+        ss << str00 << i << png;
+        path = ss.str();
+
+        cout << path <<endl;
+
+        const char *p = path.c_str();
+        cout << p <<endl;
+
+
+        img = imread(p, CV_LOAD_IMAGE_GRAYSCALE);
+
+        imshow("img", img);
+        waitKey(0);
+
+        out = normalize(img, 1);
+        if (out.cols <1) out = normalize(img, 2);
+
+    }
+*/
+
+/*
+    const char * array[13];
+    array[0] = "../../../face3d/RGBD_Face_dataset_training/010_00_image.png";
+    array[1] = "../../../face3d/RGBD_Face_dataset_training/010_01_image.png";
+    array[2] = "../../../face3d/RGBD_Face_dataset_training/010_02_image.png";
+    array[3] = "../../../face3d/RGBD_Face_dataset_training/010_03_image.png";
+    array[4] = "../../../face3d/RGBD_Face_dataset_training/010_04_image.png";
+    array[5] = "../../../face3d/RGBD_Face_dataset_training/010_05_image.png";
+    array[6] = "../../../face3d/RGBD_Face_dataset_training/010_06_image.png";
+    array[7] = "../../../face3d/RGBD_Face_dataset_training/010_07_image.png";
+    array[8] = "../../../face3d/RGBD_Face_dataset_training/010_08_image.png";
+    array[9] = "../../../face3d/RGBD_Face_dataset_training/010_09_image.png";
+    array[10] = "../../../face3d/RGBD_Face_dataset_training/010_10_image.png";
+    array[11] = "../../../face3d/RGBD_Face_dataset_training/010_11_image.png";
+    array[12] = "../../../face3d/RGBD_Face_dataset_training/010_12_image.png";
+
+*/
+
+
+    const char * array[13];
+    array[0] = "../../../face3d/RGBD_Face_dataset_training/009_00_image.png";
+    array[1] = "../../../face3d/RGBD_Face_dataset_training/009_01_image.png";
+    array[2] = "../../../face3d/RGBD_Face_dataset_training/009_02_image.png";
+    array[3] = "../../../face3d/RGBD_Face_dataset_training/009_03_image.png";
+    array[4] = "../../../face3d/RGBD_Face_dataset_training/009_04_image.png";
+    array[5] = "../../../face3d/RGBD_Face_dataset_training/009_05_image.png";
+    array[6] = "../../../face3d/RGBD_Face_dataset_training/009_06_image.png";
+    array[7] = "../../../face3d/RGBD_Face_dataset_training/009_07_image.png";
+    array[8] = "../../../face3d/RGBD_Face_dataset_training/009_08_image.png";
+    array[9] = "../../../face3d/RGBD_Face_dataset_training/009_09_image.png";
+    array[10] = "../../../face3d/RGBD_Face_dataset_training/009_10_image.png";
+    array[11] = "../../../face3d/RGBD_Face_dataset_training/009_11_image.png";
+    array[12] = "../../../face3d/RGBD_Face_dataset_training/009_12_image.png";
+
+
+/*
+    const char * array[13];
+    array[0] = "../../../face3d/RGBD_Face_dataset_training/001_00_image.png";
+    array[1] = "../../../face3d/RGBD_Face_dataset_training/001_01_image.png";
+    array[2] = "../../../face3d/RGBD_Face_dataset_training/001_02_image.png";
+    array[3] = "../../../face3d/RGBD_Face_dataset_training/001_03_image.png";
+    array[4] = "../../../face3d/RGBD_Face_dataset_training/001_04_image.png";
+    array[5] = "../../../face3d/RGBD_Face_dataset_training/001_05_image.png";
+    array[6] = "../../../face3d/RGBD_Face_dataset_training/001_06_image.png";
+    array[7] = "../../../face3d/RGBD_Face_dataset_training/001_07_image.png";
+    array[8] = "../../../face3d/RGBD_Face_dataset_training/001_08_image.png";
+    array[9] = "../../../face3d/RGBD_Face_dataset_training/001_09_image.png";
+    array[10] = "../../../face3d/RGBD_Face_dataset_training/001_10_image.png";
+    array[11] = "../../../face3d/RGBD_Face_dataset_training/001_11_image.png";
+    array[12] = "../../../face3d/RGBD_Face_dataset_training/001_12_image.png";
+*/
+
+/*
+    const char * array[13];
+    array[0] = "../../../face3d/RGBD_Face_dataset_training/000_00_image.png";
+    array[1] = "../../../face3d/RGBD_Face_dataset_training/000_01_image.png";
+    array[2] = "../../../face3d/RGBD_Face_dataset_training/000_02_image.png";
+    array[3] = "../../../face3d/RGBD_Face_dataset_training/000_03_image.png";
+    array[4] = "../../../face3d/RGBD_Face_dataset_training/000_04_image.png";
+    array[5] = "../../../face3d/RGBD_Face_dataset_training/000_05_image.png";
+    array[6] = "../../../face3d/RGBD_Face_dataset_training/000_06_image.png";
+    array[7] = "../../../face3d/RGBD_Face_dataset_training/000_07_image.png";
+    array[8] = "../../../face3d/RGBD_Face_dataset_training/000_08_image.png";
+    array[9] = "../../../face3d/RGBD_Face_dataset_training/000_09_image.png";
+    array[10] = "../../../face3d/RGBD_Face_dataset_training/000_10_image.png";
+    array[11] = "../../../face3d/RGBD_Face_dataset_training/000_11_image.png";
+    array[12] = "../../../face3d/RGBD_Face_dataset_training/000_12_image.png";
+
+*/
+    Mat img, out;
+    for (int i = 0; i < 13; i++)
+    {
+        cout << array[i] << endl;
+        img = imread(array[i], CV_LOAD_IMAGE_GRAYSCALE);
+        out = normalize(img, 1);
+        if (out.cols <1) out = normalize(img, 2);
+
+        stringstream ss;
+        ss << "facciaProva" << i << ".jpg";
+        const string str = ss.str();
+        const char* cstr = str.c_str();
+
+        imwrite( cstr, out );
+
+
+    }
 
     return 0;
 }

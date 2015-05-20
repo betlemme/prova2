@@ -20,15 +20,34 @@ SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 add_executable(esempio
         src/esempio.cpp
+        src/face.cpp
         )
 
 target_link_libraries(esempio ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 
-add_executable(face
-        src/face.cpp
+#add_executable(face
+#        src/face.cpp
+#        )
+#
+#target_link_libraries(face ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
+
+add_executable(recognition
+        src/recognition.cpp
+        src/detection.cpp
         )
 
-target_link_libraries(face ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
+target_link_libraries(recognition ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
+
+
+#add_executable(detection
+#        src/detection.cpp
+#        )
+#
+#target_link_libraries(detection ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
+
+
+
+
 
 
 
