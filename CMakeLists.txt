@@ -46,6 +46,30 @@ target_link_libraries(recognition ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 #target_link_libraries(detection ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 
 
+add_executable(training
+        src/training.cpp
+        src/detection.cpp
+        )
+
+target_link_libraries(training ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
+
+
+add_executable(ex5
+        src/ex5.cpp
+        )
+
+target_link_libraries(ex5 ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
+
+add_executable(3dfeature
+        src/3dfeature.cpp
+        )
+
+target_link_libraries(3dfeature ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
+
+
+
+
+
 
 
 

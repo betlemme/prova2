@@ -8,3 +8,6 @@ using namespace cv;
 using namespace std;
 
 Mat detect(Mat source);
+Mat detectSimple(Mat source);
+Mat ellipseMask(Mat face);
+
