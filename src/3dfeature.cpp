@@ -108,30 +108,88 @@ pcl::PointCloud<pcl::FPFHSignature33>::Ptr featureFPFHScalc(pcl::PointCloud<pcl:
     return descriptors;
 }
 
+pcl::CorrespondencesPtr match(pcl::PointCloud<pcl::FPFHSignature33>::Ptr scene, pcl::PointCloud<pcl::FPFHSignature33>::Ptr model)
+{
+    // Object for storing the SHOT descriptors for the scene.
+    pcl::PointCloud<pcl::FPFHSignature33>::Ptr sceneDescriptors(new pcl::PointCloud<pcl::FPFHSignature33>());
+    // Object for storing the SHOT descriptors for the model.
+    pcl::PointCloud<pcl::FPFHSignature33>::Ptr modelDescriptors(new pcl::PointCloud<pcl::FPFHSignature33>());
+
+    sceneDescriptors = scene;
+    modelDescriptors = model;
+
+    // A kd-tree object that uses the FLANN library for fast search of nearest neighbors.
+    pcl::KdTreeFLANN<pcl::FPFHSignature33> matching;
+    matching.setInputCloud(modelDescriptors);
+    // A Correspondence object stores the indices of the query and the match,
+    // and the distance/weight.
+    pcl::CorrespondencesPtr correspondences(new pcl::Correspondences());
+
+    // Check every descriptor computed for the scene.
+    for (size_t i = 0; i < sceneDescriptors->size(); ++i)
+    {
+        std::vector<int> neighbors(1);
+        std::vector<float> squaredDistances(1);
+        // Ignore NaNs.
+//        if (pcl_isfinite(sceneDescriptors->at(i).descriptor[0]))
+//        {
+            // Find the nearest neighbor (in descriptor space)...
+            int neighborCount = matching.nearestKSearch(sceneDescriptors->at(i), 1, neighbors, squaredDistances);
+            // ...and add a new correspondence if the distance is less than a threshold
+            // (SHOT distances are between 0 and 1, other descriptors use different metrics).
+            if (neighborCount == 1 && squaredDistances[0] < 0.9f)  //0.25f
+            {
+                pcl::Correspondence correspondence(neighbors[0], static_cast<int>(i), squaredDistances[0]);
+                correspondences->push_back(correspondence);
+            }
+//        }
+    }
+    std::cout << "Found " << correspondences->size() << " correspondences." << std::endl;
+
+    return correspondences;
+}
+
 
 
 
 int main()
 {
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudData(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudTarget(new pcl::PointCloud<pcl::PointXYZ>);
+
     pcl::PointCloud<pcl::PointXYZ>::Ptr kp(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr kp2(new pcl::PointCloud<pcl::PointXYZ>);
+
     pcl::PointCloud<pcl::FPFHSignature33>::Ptr feature(new pcl::PointCloud<pcl::FPFHSignature33>);
+    pcl::PointCloud<pcl::FPFHSignature33>::Ptr feature2(new pcl::PointCloud<pcl::FPFHSignature33>);
+
+    pcl::CorrespondencesPtr corrispondences(new pcl::Correspondences());
+
 
     std::cout << "fin qui ok 1" <<std::endl;
 
-    if (pcl::io::loadPCDFile<pcl::PointXYZ>("dritta.pcd", *cloud) != 0)
+    if (pcl::io::loadPCDFile<pcl::PointXYZ>("dritta.pcd", *cloudData) != 0)
         {
             return -1;
         }
-    std::cout << "nuvola caricata" << std::endl;
+    if (pcl::io::loadPCDFile<pcl::PointXYZ>("alto.pcd", *cloudTarget) != 0)
+        {
+            return -1;
+        }
 
-    kp = KeyPointsCalc(cloud);
+    std::cout << "nuvole caricate" << std::endl;
 
+    kp = KeyPointsCalc(cloudData);
     std::cout << "keypoint trovati: " << kp->size() <<std::endl;
-
     feature = featureFPFHScalc(kp);
-
     std::cout << "feature calcolate: " << feature->size() <<std::endl;
+
+    kp2 = KeyPointsCalc(cloudTarget);
+    std::cout << "keypoint2 trovati: " << kp2->size() <<std::endl;
+    feature2 = featureFPFHScalc(kp2);
+    std::cout << "feature calcolate: " << feature2->size() <<std::endl;
+
+    corrispondences = match(feature, feature2);
 
 }
 
