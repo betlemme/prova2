@@ -1,3 +1,5 @@
+// ci ho aggiunto un commento stupido
+
 #include <vector>
 #include <Eigen/Core>
 #include "pcl/point_types.h"
