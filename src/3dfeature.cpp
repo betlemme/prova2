@@ -2,11 +2,11 @@
 #include <pcl/keypoints/iss_3d.h>
 #include <pcl/features/normal_3d.h>
 #include <pcl/features/fpfh.h>
+#include <pcl/filters/filter.h>
 
 // This function by Tommaso Cavallari and Federico Tombari, taken from the tutorial
 // http://pointclouds.org/documentation/tutorials/correspondence_grouping.php
-double
-computeCloudResolution(const pcl::PointCloud<pcl::PointXYZ>::ConstPtr& cloud)
+double computeCloudResolution(const pcl::PointCloud<pcl::PointXYZ>::ConstPtr& cloud)
 {
     double resolution = 0.0;
     int numberOfPoints = 0;
@@ -89,7 +89,7 @@ pcl::PointCloud<pcl::FPFHSignature33>::Ptr featureFPFHScalc(pcl::PointCloud<pcl:
     // Estimate the normals.
     pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> normalEstimation;
     normalEstimation.setInputCloud(cloud);
-    normalEstimation.setRadiusSearch(0.03);
+    normalEstimation.setRadiusSearch(0.02);
     pcl::search::KdTree<pcl::PointXYZ>::Ptr kdtree(new pcl::search::KdTree<pcl::PointXYZ>);
     normalEstimation.setSearchMethod(kdtree);
     normalEstimation.compute(*normals);
@@ -101,7 +101,7 @@ pcl::PointCloud<pcl::FPFHSignature33>::Ptr featureFPFHScalc(pcl::PointCloud<pcl:
     fpfh.setSearchMethod(kdtree);
     // Search radius, to look for neighbors. Note: the value given here has to be
     // larger than the radius used to estimate the normals.
-    fpfh.setRadiusSearch(0.05);
+    fpfh.setRadiusSearch(0.03);
 
     fpfh.compute(*descriptors);
 
@@ -154,8 +154,8 @@ pcl::CorrespondencesPtr match(pcl::PointCloud<pcl::FPFHSignature33>::Ptr scene, 
 
 int main()
 {
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudData(new pcl::PointCloud<pcl::PointXYZ>);
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudTarget(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudData(new pcl::PointCloud<pcl::PointXYZ>);  //database
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudQuery(new pcl::PointCloud<pcl::PointXYZ>);  //query
 
     pcl::PointCloud<pcl::PointXYZ>::Ptr kp(new pcl::PointCloud<pcl::PointXYZ>);
     pcl::PointCloud<pcl::PointXYZ>::Ptr kp2(new pcl::PointCloud<pcl::PointXYZ>);
@@ -172,10 +172,12 @@ int main()
         {
             return -1;
         }
-    if (pcl::io::loadPCDFile<pcl::PointXYZ>("alto.pcd", *cloudTarget) != 0)
+    if (pcl::io::loadPCDFile<pcl::PointXYZ>("000_00_cloud.pcd", *cloudQuery) != 0)
         {
             return -1;
         }
+    std::vector<int> mapping;
+    pcl::removeNaNFromPointCloud(*cloudQuery, *cloudQuery, mapping);
 
     std::cout << "nuvole caricate" << std::endl;
 
@@ -184,7 +186,7 @@ int main()
     feature = featureFPFHScalc(kp);
     std::cout << "feature calcolate: " << feature->size() <<std::endl;
 
-    kp2 = KeyPointsCalc(cloudTarget);
+    kp2 = KeyPointsCalc(cloudQuery);
     std::cout << "keypoint2 trovati: " << kp2->size() <<std::endl;
     feature2 = featureFPFHScalc(kp2);
     std::cout << "feature calcolate: " << feature2->size() <<std::endl;

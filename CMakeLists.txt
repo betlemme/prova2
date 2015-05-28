@@ -67,6 +67,14 @@ add_executable(3dfeature
 target_link_libraries(3dfeature ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 
 
+add_executable(3dsimple
+        src/3dsimple.cpp
+        )
+
+target_link_libraries(3dsimple ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
+
+
+
 
 
 
