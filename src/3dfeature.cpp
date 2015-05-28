@@ -3,6 +3,81 @@
 #include <pcl/features/normal_3d.h>
 #include <pcl/features/fpfh.h>
 #include <pcl/filters/filter.h>
+#include <pcl/registration/transforms.h>
+#include <pcl/visualization/pcl_visualizer.h>
+
+
+void visualize_correspondences (const pcl::PointCloud<pcl::PointXYZ>::Ptr points1,
+                                const pcl::PointCloud<pcl::PointXYZ>::Ptr keypoints1,
+                                const pcl::PointCloud<pcl::PointXYZ>::Ptr points2,
+                                const pcl::PointCloud<pcl::PointXYZ>::Ptr keypoints2,
+                                const std::vector<int> &correspondences,
+                                const std::vector<float> &correspondence_scores)
+{
+  // We want to visualize two clouds side-by-side, so do to this, we'll make copies of the clouds and transform them
+  // by shifting one to the left and the other to the right.  Then we'll draw lines between the corresponding points
+
+  // Create some new point clouds to hold our transformed data
+  pcl::PointCloud<pcl::PointXYZ>::Ptr points_left (new pcl::PointCloud<pcl::PointXYZ>);
+  pcl::PointCloud<pcl::PointXYZ>::Ptr keypoints_left (new pcl::PointCloud<pcl::PointXYZ>);
+  pcl::PointCloud<pcl::PointXYZ>::Ptr points_right (new pcl::PointCloud<pcl::PointXYZ>);
+  pcl::PointCloud<pcl::PointXYZ>::Ptr keypoints_right (new pcl::PointCloud<pcl::PointXYZ>);
+
+  // Shift the first clouds' points to the left
+  //const Eigen::Vector3f translate (0.0, 0.0, 0.3);
+  const Eigen::Vector3f translate (0.4, 0.0, 0.0);
+  const Eigen::Quaternionf no_rotation (0, 0, 0, 0);
+  pcl::transformPointCloud (*points1, *points_left, -translate, no_rotation);
+  pcl::transformPointCloud (*keypoints1, *keypoints_left, -translate, no_rotation);
+
+  // Shift the second clouds' points to the right
+  pcl::transformPointCloud (*points2, *points_right, translate, no_rotation);
+  pcl::transformPointCloud (*keypoints2, *keypoints_right, translate, no_rotation);
+
+  // Add the clouds to the vizualizer
+  pcl::visualization::PCLVisualizer viz;
+  viz.addPointCloud (points_left, "points_left");
+  viz.addPointCloud (points_right, "points_right");
+
+  // Compute the median correspondence score
+  std::vector<float> temp (correspondence_scores);
+  std::sort (temp.begin (), temp.end ());
+  float median_score = temp[temp.size ()/2];
+
+  // Draw lines between the best corresponding points
+  for (size_t i = 0; i < keypoints_left->size (); ++i)
+  {
+    if (correspondence_scores[i] > median_score)
+    {
+      continue; // Don't draw weak correspondences
+    }
+
+    // Get the pair of points
+    const pcl::PointXYZ & p_left = keypoints_left->points[i];
+    const pcl::PointXYZ & p_right = keypoints_right->points[correspondences[i]];
+
+    // Generate a random (bright) color
+    double r = (rand() % 100);
+    double g = (rand() % 100);
+    double b = (rand() % 100);
+    double max_channel = std::max (r, std::max (g, b));
+    r /= max_channel;
+    g /= max_channel;
+    b /= max_channel;
+
+    // Generate a unique string for each line
+    std::stringstream ss ("line");
+    ss << i;
+
+    // Draw the line
+    viz.addLine (p_left, p_right, r, g, b, ss.str ());
+  }
+
+  // Give control over to the visualizer
+  viz.spin ();
+}
+
+
 
 // This function by Tommaso Cavallari and Federico Tombari, taken from the tutorial
 // http://pointclouds.org/documentation/tutorials/correspondence_grouping.php
@@ -108,8 +183,14 @@ pcl::PointCloud<pcl::FPFHSignature33>::Ptr featureFPFHScalc(pcl::PointCloud<pcl:
     return descriptors;
 }
 
-pcl::CorrespondencesPtr match(pcl::PointCloud<pcl::FPFHSignature33>::Ptr scene, pcl::PointCloud<pcl::FPFHSignature33>::Ptr model)
+pcl::CorrespondencesPtr match(pcl::PointCloud<pcl::FPFHSignature33>::Ptr scene, pcl::PointCloud<pcl::FPFHSignature33>::Ptr model,std::vector<int> &correspondences_out, std::vector<float> &correspondence_scores_out)
 {
+    // Resize the output vector (per debug, mi servono i vettori degli accoppiamenti per disegnarli)
+    correspondences_out.resize (scene->size ());
+    correspondence_scores_out.resize (scene->size ());
+
+
+
     // Object for storing the SHOT descriptors for the scene.
     pcl::PointCloud<pcl::FPFHSignature33>::Ptr sceneDescriptors(new pcl::PointCloud<pcl::FPFHSignature33>());
     // Object for storing the SHOT descriptors for the model.
@@ -142,6 +223,9 @@ pcl::CorrespondencesPtr match(pcl::PointCloud<pcl::FPFHSignature33>::Ptr scene, 
                 pcl::Correspondence correspondence(neighbors[0], static_cast<int>(i), squaredDistances[0]);
                 correspondences->push_back(correspondence);
             }
+            //debug: aggiungo le corrispondenze in un vetttore di interi, per disegnarle
+            correspondences_out[i] = neighbors[0];
+            correspondence_scores_out[i] = squaredDistances[0];
 //        }
     }
     std::cout << "Found " << correspondences->size() << " correspondences." << std::endl;
@@ -172,7 +256,7 @@ int main()
         {
             return -1;
         }
-    if (pcl::io::loadPCDFile<pcl::PointXYZ>("000_00_cloud.pcd", *cloudQuery) != 0)
+    if (pcl::io::loadPCDFile<pcl::PointXYZ>("destra.pcd", *cloudQuery) != 0)
         {
             return -1;
         }
@@ -191,7 +275,11 @@ int main()
     feature2 = featureFPFHScalc(kp2);
     std::cout << "feature calcolate: " << feature2->size() <<std::endl;
 
-    corrispondences = match(feature, feature2);
+    std::vector<int> correspondences_out;
+    std::vector<float> correspondence_scores_out;
+
+    corrispondences = match(feature, feature2, correspondences_out, correspondence_scores_out);
+    visualize_correspondences (cloudData, kp, cloudQuery, kp2, correspondences_out, correspondence_scores_out);
 
 }
 
