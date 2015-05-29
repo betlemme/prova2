@@ -4,7 +4,7 @@ Estrazione facciale da pcd fornita per il progetto.
 PCL.exe nome_input nome_output
 
 nome_input: pcd di ingresso (pcd di training)
-nome_output: pcd di output contenente la faccia estratta
+nome_output: pcd di output contenente la faccia estratta.
 
 **/
 
