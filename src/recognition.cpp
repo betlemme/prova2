@@ -58,6 +58,96 @@ vector<Mat> detectFacesOnTest(int dataset){
        setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test1/016_07_image.png", CV_LOAD_IMAGE_GRAYSCALE));
        setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test1/017_07_image.png", CV_LOAD_IMAGE_GRAYSCALE));
        setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test1/018_07_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+    }
+
+    if (dataset == 2)
+    {
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/000_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/001_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/002_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/003_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/004_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/005_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/006_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/007_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/008_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/009_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/010_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/011_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/012_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/013_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/014_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/015_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/016_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/017_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test2/018_09_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+    }
+
+    if (dataset == 3)
+    {
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/000_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/001_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/002_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/003_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/004_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/005_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/006_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/007_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/008_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/009_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/010_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/011_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/012_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/013_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/014_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/015_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/016_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/017_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/018_05_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/000_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/001_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/002_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/003_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/004_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/005_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/006_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/007_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/008_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/009_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/010_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/011_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/012_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/013_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/014_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/015_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/016_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/017_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test3/018_06_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+    }
+
+    if (dataset == 4)
+    {
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/000_01_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/001_02_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/002_03_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/003_04_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/004_01_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/005_02_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/006_03_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/007_04_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/008_01_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/009_02_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/010_03_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/011_04_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/012_01_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/013_02_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/014_03_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/015_04_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/016_01_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/017_02_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+       setImages.push_back(imread("../../../face3d/RGBD_Face_dataset_testing/Test4/018_03_image.png", CV_LOAD_IMAGE_GRAYSCALE));
+    }
 
        Mat img;
 
@@ -74,7 +164,7 @@ vector<Mat> detectFacesOnTest(int dataset){
 
        }
 
-    }
+
 
     return setImages;
 }
