@@ -9,6 +9,9 @@
  *
  * -purtroppo non riesce a ricostruire bene le facce, mi accontento del parametro della distanza
  *
+ *
+ * COME ESEGUIRE: ./recognition [dataset] (con dataset = [1,2,3,4])
+ *
  */
 
 
@@ -621,16 +624,18 @@ double getSimilarity(const Mat A, const Mat B)
     }
 }
 
-int main()
+int main(int argc, char *argv[])
 {
 
       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      int dataset = atoi(argv[1]);
 
       //creo l'oggetto Facerecognizer già trainato con le facce del set di persone da riconoscere:
       Ptr<FaceRecognizer> model = train();
 
       // da dataset:
-      vector<Mat> vec = detectFacesOnTest(1);
+      vector<Mat> vec = detectFacesOnTest(dataset);
 
       int label[vec.size()] ;
       double confidence[vec.size()];
