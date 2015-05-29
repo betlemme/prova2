@@ -6,6 +6,13 @@ PCL.exe nome_input nome_output
 nome_input: pcd facciale di ingresso (pcd di training)
 nome_output: pcd di output contenente la faccia estratta
 
+modificare red,green e blue per cambiare le soglie di eliminazione.
+(red_min è stato inserito per poter individuare falsi positivi
+che appartengono alla faccia e che senza questo controllo verrebbero
+eliminati quando invece dovrebbero rimanere per contribuire
+all'informazione facciale, vedi ad esempio i punti di riflesso
+della luce dove il colore è quasi bianco)
+
 **/
 
 #include <pcl/io/pcd_io.h> 		    // for reading the point cloud
@@ -18,6 +25,13 @@ nome_output: pcd di output contenente la faccia estratta
 #include <boost/thread/thread.hpp>
 #include <pcl/common/common_headers.h> 
 #include <pcl/console/parse.h>
+
+
+#define red 85
+#define green 85
+#define blue 85
+
+#define red_min 165
 
 typedef pcl::PointXYZRGBA PointT;
 
@@ -42,11 +56,11 @@ int main (int argc, char** argv)
 	{	
 		
 	  // se il colore del 3Dpixel è fuori dal colore della faccia
-	  if ( (cloud->at(i).r > 85) && (cloud->at(i).g > 85) && (cloud->at(i).b > 85) )
+	  if ( (cloud->at(i).r > red) && (cloud->at(i).g > green) && (cloud->at(i).b > blue) )
 	  {
 		  // non inserire il pixel nella nuova pcd
 		  
-		  if ( cloud->at(i).r > 165 ) // considerà però i punti in cui la luce ha reso bianca l'immagine
+		  if ( cloud->at(i).r > red_min ) // considerà però i punti in cui la luce ha reso bianca l'immagine
 		  {
 				// e aggiungili alla nuova pcd considerata buona
 				cloud_ok->push_back(cloud->at(i));
