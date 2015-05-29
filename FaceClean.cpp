@@ -11,7 +11,7 @@ modificare red,green e blue per cambiare le soglie di eliminazione.
 che appartengono alla faccia e che senza questo controllo verrebbero
 eliminati quando invece dovrebbero rimanere per contribuire
 all'informazione facciale, vedi ad esempio i punti di riflesso
-della luce dove il colore è quasi bianco)
+della luce dove il colore è quasi bianco).
 
 **/
 
