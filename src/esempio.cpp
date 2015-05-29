@@ -1,14 +1,18 @@
-/*
-#include <opencv2/opencv.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <iostream>
-
-
-using namespace cv;
-using namespace std;
-*/
-
 #include "face.h"
+
+
+
+/* File per testare il recognizer date le immagini
+ * di training. E' deprecato, cioè serve solo a fare
+ * prove.
+ *
+ *
+ *
+ * */
+
+
+
+
 
 main()
 {

@@ -1,15 +1,19 @@
-/*
-#include <iostream>
-#include <opencv2/opencv.hpp>
-#include <opencv2/highgui/highgui.hpp>
-
-using namespace cv;
-using namespace std;
-*/
-
 #include "detection.h"
 
-//restituisco il vettore contenente le facce 70x70 trovate nel dataset. int dataset = [1 2 3 4]
+/* Legge il dataset e cerca le facce
+ * Stampa i risultati.
+ *
+ * -train() :creo l'oggetto Facerecognizer già trainato con le facce del set di persone da riconoscere
+ * -detectFacesOnTest() : crea il vettore di facce trovate nel set di testing
+ * -faccio il predict e ricostruisco la faccia per misurare la similarità con la faccia campione.
+ *
+ * -purtroppo non riesce a ricostruire bene le facce, mi accontento del parametro della distanza
+ *
+ */
+
+
+
+//restituisco il vettore contenente le facce 70x70(140x140) trovate nel dataset di testing. int dataset = [1 2 3 4]
 vector<Mat> detectFacesOnTest(int dataset){
     vector<Mat> setImages;
 
@@ -532,6 +536,7 @@ int main()
 
       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+      //creo l'oggetto Facerecognizer già trainato con le facce del set di persone da riconoscere:
       Ptr<FaceRecognizer> model = train();
 
       // da dataset:

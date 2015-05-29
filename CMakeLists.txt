@@ -74,6 +74,22 @@ add_executable(3dsimple
 target_link_libraries(3dsimple ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 
 
+add_executable(FaceClean
+        src/FaceClean.cpp
+        )
+
+target_link_libraries(FaceClean ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
+
+
+add_executable(FaceRecognition2
+        src/FaceRecognition2.cpp
+        )
+
+target_link_libraries(FaceRecognition2 ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
+
+
+
+
 
 
 

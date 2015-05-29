@@ -2,6 +2,16 @@
 
 #include <cstdlib>
 
+/* Crea e salva le facce estrapolate dal dataset di training
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ * */
+
 
 
 

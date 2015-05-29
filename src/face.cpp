@@ -1,17 +1,15 @@
-/*
-#include <opencv2/opencv.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <iostream>
-#include <string>
-#include <sstream>
-Mat
-using namespace cv;
-using namespace std;
-
-Mat normalize(Mat source, int descrittore);
-*/
-
 #include "face.h"
+
+/*DEPRECATO:
+ *non è piu usato.
+ *E' stato rimpiazzato da detection.cpp
+ *però alcuni file importano face.h quindi lo teniamo
+ *quando faremo ordine togliamo tutto
+ *
+ * */
+
+
+
 
 // Histogram Equalize seperately for the left and right sides of the face.
 void equalizeLeftAndRightHalves(Mat &faceImg)

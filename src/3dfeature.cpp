@@ -8,7 +8,20 @@
 #include <pcl/correspondence.h>
 #include <pcl/recognition/cg/geometric_consistency.h>
 
-
+/* Estrae features e fa il match tra 2 nuvole.
+ * contiene i metodi:
+ *- KeyPointsCalc
+ *- featureFPFHScalc
+ *- consistency (da problemi)
+ *- visualize_corrispondences
+ *
+ * -main
+ *
+ *
+ *
+ *
+ *
+ * */
 
 int consistency(pcl::PointCloud<pcl::PointXYZ>::Ptr _sceneKeypoints, pcl::PointCloud<pcl::PointXYZ>::Ptr _modelKeypoints, pcl::CorrespondencesPtr _correspondences )
 {

@@ -1,6 +1,18 @@
 #include "detection.h"
 
 
+/* Contiene metodi per il face detection (invocati da training.cpp e recognition.cpp):
+ *
+ *-void equalizeLeftAndRightHalves(Mat &faceImg) -per equalizzare img frontali (non piu usato)
+ *
+ *-Mat detect(Mat source) -per fare il detect frontale + eye detect, non piu usato perchè non compatibile con fot di profilo
+ *
+ *-Mat detectSimple(Mat source) semplice face detect, frontale o di profilo
+ *
+ *-Mat ellipseMask(Mat face) ellisse intorno alla faccia
+ *
+ * */
+
 // Histogram Equalize seperately for the left and right sides of the face.
 void equalizeLeftAndRightHalves(Mat &faceImg)
 {
@@ -401,11 +413,7 @@ Mat detect(Mat source)
 
 }
 
-
-
-
-
-
+/*
 int mainmain()
 {
     Mat img = imread("../../../face3d/RGBD_Face_dataset_training/000_00_image.png", CV_LOAD_IMAGE_GRAYSCALE);
@@ -419,3 +427,4 @@ int mainmain()
 
     return 1;
 }
+*/

@@ -12,6 +12,18 @@
 #include <pcl/registration/transforms.h>
 #include <pcl/visualization/pcl_visualizer.h>
 
+
+/* DEPRECATO:
+ *
+ * ho preso da questo file il metodo per visualizzare  graficamente i match di feature
+ *
+ * Attualmente usiamo 3dfeature.cpp
+ *
+ *
+ *
+ */
+
+
 void
 downsample (pcl::PointCloud<pcl::PointXYZRGB>::Ptr &points, float leaf_size,
             pcl::PointCloud<pcl::PointXYZRGB>::Ptr &downsampled_out)
