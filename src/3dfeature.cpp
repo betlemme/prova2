@@ -66,6 +66,7 @@ int consistency(pcl::PointCloud<pcl::PointXYZ>::Ptr _sceneKeypoints, pcl::PointC
         std::cout << std::endl;
         printf("\t\tt = < %0.3f, %0.3f, %0.3f >\n", translation(0), translation(1), translation(2));
     }
+    return 0;
 }
 
 
