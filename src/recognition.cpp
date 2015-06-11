@@ -1726,28 +1726,31 @@ int main(int argc, char *argv[])
           waitKey(0);
 
 
-          // Verify whether the reconstructed face looks like the preprocessed face, otherwise it is probably an unknown person.
+          // comparo la faccia ricostruita con la faccia identificata, se non è somigliante probabilmente è un soggetto unknown:
           double similarity = getSimilarity(vec[i], reconstructedFace);
+
+
+            //if (confidence[i] > 5200) label[i] = -1;
+
+            /* stimando la soglia con Confidence:
+             * DATASET 1:         DATASET 2:           DATASET 3:          DATASET 4:
+             * rank-1%: 0.75      rank-1%: 0.25        rank-1%: 0.25       rank-1%: 0.25
+             * FP-unknown%:0.36   FP-unknown%: 0.133   FP-unknown%:0.266   FP-unknown%: 0.0666
+             *
+             * */
 
           if (similarity > 0.095) label[i] = -1;        //considero la persona come estranea
 
-          //se devo predirre -1 ma ho un label =! da -1, aumento il contatore di falsi positivi:
-          /*
+          /* stimando la soglia con Similarity:
            * DATASET 1:         DATASET 2:          DATASET 3:          DATASET 4:
            * rank-1%: 0.625     rank-1%: 0.5        rank-1%: 0.375      rank-1%: 0.25
            * FP-unknown%: 0.4   FP-unknown%: 0.53   FP-unknown%: 0.3    FP-unknown%: 0.0666
            *
            * */
+          //se devo predirre -1 ma ho un label =! da -1, aumento il contatore di falsi positivi:
           if (correctLabel[i] == -1 && label[i] != -1) FPunknown++;
           if (correctLabel[i] != -1 && label[i] == correctLabel[i]) rank1++;
 
-/*
-          int falso = 0;
-          if (similarity > 0.5)
-          {
-              falso = -1;  // Unknown person.
-          }
-*/
 
           cout << "foto " << i << ": asp. id "<< correctLabel[i] << " Pred. label: " << label[i] << "; confidenza: " << confidence[i] << "similarità: " << similarity << endl;
 
