@@ -552,7 +552,1044 @@ Ptr<FaceRecognizer> train()
     soggetto10 = imread("../../../face3d/face_10_trained2/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
     pushPreProcImg(soggetto10, 10, images, labels);
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// Finiti i soggetti accettati. completo l'insienìme di eigen/fiserfaces con altri soggetti:
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //soggetto 02
+
+    Mat soggetto02;
+
+    soggetto02 = imread("../../../face3d/face_02_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto02, 2, images, labels);
+
+    soggetto02 = imread("../../../face3d/face_02_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto02, 2, images, labels);
+
+    soggetto02 = imread("../../../face3d/face_02_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto02, 2, images, labels);
+
+    soggetto02 = imread("../../../face3d/face_02_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto02, 2, images, labels);
+/*
+    soggetto02 = imread("../../../face3d/face_02_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto02, 2, images, labels);
+
+    soggetto02 = imread("../../../face3d/face_02_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto02, 2, images, labels);
+
+    soggetto02 = imread("../../../face3d/face_02_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto02, 2, images, labels);
+
+    soggetto02 = imread("../../../face3d/face_02_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto02, 2, images, labels);
+
+    soggetto02 = imread("../../../face3d/face_02_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto02, 2, images, labels);
+
+    soggetto02 = imread("../../../face3d/face_02_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto02, 2, images, labels);
+
+    soggetto02 = imread("../../../face3d/face_02_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto02, 2, images, labels);
+
+    soggetto02 = imread("../../../face3d/face_02_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto02, 2, images, labels);
+*/
+    soggetto02 = imread("../../../face3d/face_02_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto02, 2, images, labels);
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 03
+
+    Mat soggetto3;
+
+    soggetto3 = imread("../../../face3d/face_03_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto3, 3, images, labels);
+/*
+    soggetto3 = imread("../../../face3d/face_03_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto3, 3, images, labels);
+
+    soggetto3 = imread("../../../face3d/face_03_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto3, 3, images, labels);
+*/
+    soggetto3 = imread("../../../face3d/face_03_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto3, 3, images, labels);
+
+    soggetto3 = imread("../../../face3d/face_03_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto3, 3, images, labels);
+
+    soggetto3 = imread("../../../face3d/face_03_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto3, 3, images, labels);
+
+    soggetto3 = imread("../../../face3d/face_03_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto3, 3, images, labels);
+
+    soggetto3 = imread("../../../face3d/face_03_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto3, 3, images, labels);
+
+    soggetto3 = imread("../../../face3d/face_03_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto3, 3, images, labels);
+
+    soggetto3 = imread("../../../face3d/face_03_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto3, 3, images, labels);
+
+    soggetto3 = imread("../../../face3d/face_03_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto3, 3, images, labels);
+
+    soggetto3 = imread("../../../face3d/face_03_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto3, 3, images, labels);
+
+    soggetto3 = imread("../../../face3d/face_03_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto3, 3, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 04
+
+    Mat soggetto04;
+
+    soggetto04 = imread("../../../face3d/face_04_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto04, 4, images, labels);
+
+    soggetto04 = imread("../../../face3d/face_04_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto04, 4, images, labels);
+/*
+    soggetto04 = imread("../../../face3d/face_04_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto04, 4, images, labels);
+*/
+    soggetto04 = imread("../../../face3d/face_04_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto04, 4, images, labels);
+/*
+    soggetto04 = imread("../../../face3d/face_04_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto04, 4, images, labels);
+*/
+    soggetto04 = imread("../../../face3d/face_04_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto04, 4, images, labels);
+
+    soggetto04 = imread("../../../face3d/face_04_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto04, 4, images, labels);
+/*
+    soggetto04 = imread("../../../face3d/face_04_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto04, 4, images, labels);
+*/
+    soggetto04 = imread("../../../face3d/face_04_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto04, 4, images, labels);
+
+    soggetto04 = imread("../../../face3d/face_04_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto04, 4, images, labels);
+
+    soggetto04 = imread("../../../face3d/face_04_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto04, 4, images, labels);
+
+    soggetto04 = imread("../../../face3d/face_04_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto04, 4, images, labels);
+
+    soggetto04 = imread("../../../face3d/face_04_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto04, 4, images, labels);
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 05
+
+    Mat soggetto05;
+
+    soggetto05 = imread("../../../face3d/face_05_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto05, 5, images, labels);
+
+    soggetto05 = imread("../../../face3d/face_05_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto05, 5, images, labels);
+
+ /*   soggetto05 = imread("../../../face3d/face_05_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto05, 5, images, labels);
+*/
+    soggetto05 = imread("../../../face3d/face_05_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto05, 5, images, labels);
+
+    soggetto05 = imread("../../../face3d/face_05_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto05, 5, images, labels);
+
+    soggetto05 = imread("../../../face3d/face_05_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto05, 5, images, labels);
+
+    soggetto05 = imread("../../../face3d/face_05_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto05, 5, images, labels);
+/*
+    soggetto05 = imread("../../../face3d/face_05_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto05, 5, images, labels);
+*/
+    soggetto05 = imread("../../../face3d/face_05_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto05, 5, images, labels);
+
+    soggetto05 = imread("../../../face3d/face_05_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto05, 5, images, labels);
+
+    soggetto05 = imread("../../../face3d/face_05_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto05, 5, images, labels);
+
+    soggetto05 = imread("../../../face3d/face_05_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto05, 5, images, labels);
+
+    soggetto05 = imread("../../../face3d/face_05_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto05, 5, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 06
+
+    Mat soggetto06;
+
+    soggetto06 = imread("../../../face3d/face_06_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto06, 6, images, labels);
+/*
+    soggetto06 = imread("../../../face3d/face_06_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto06, 6, images, labels);
+*/
+    soggetto06 = imread("../../../face3d/face_06_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto06, 6, images, labels);
+
+    soggetto06 = imread("../../../face3d/face_06_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto06, 6, images, labels);
+
+    soggetto06 = imread("../../../face3d/face_06_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto06, 6, images, labels);
+
+    soggetto06 = imread("../../../face3d/face_06_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto06, 6, images, labels);
+
+    soggetto06 = imread("../../../face3d/face_06_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto06, 6, images, labels);
+/*
+    soggetto06 = imread("../../../face3d/face_06_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto06, 6, images, labels);
+
+    soggetto06 = imread("../../../face3d/face_06_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto06, 6, images, labels);
+*/
+    soggetto06 = imread("../../../face3d/face_06_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto06, 6, images, labels);
+
+    soggetto06 = imread("../../../face3d/face_06_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto06, 6, images, labels);
+
+    soggetto06 = imread("../../../face3d/face_06_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto06, 6, images, labels);
+
+    soggetto06 = imread("../../../face3d/face_06_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto06, 6, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 07
+
+    Mat soggetto07;
+
+    soggetto07 = imread("../../../face3d/face_07_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto07, 7, images, labels);
+
+    soggetto07 = imread("../../../face3d/face_07_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto07, 7, images, labels);
+
+    soggetto07 = imread("../../../face3d/face_07_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto07, 7, images, labels);
+
+    soggetto07 = imread("../../../face3d/face_07_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto07, 7, images, labels);
+/*
+    soggetto07 = imread("../../../face3d/face_07_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto07, 7, images, labels);
+*/
+    soggetto07 = imread("../../../face3d/face_07_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto07, 7, images, labels);
+
+    soggetto07 = imread("../../../face3d/face_07_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto07, 7, images, labels);
+/*
+    soggetto07 = imread("../../../face3d/face_07_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto07, 7, images, labels);
+
+    soggetto07 = imread("../../../face3d/face_07_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto07, 7, images, labels);
+*/
+    soggetto07 = imread("../../../face3d/face_07_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto07, 7, images, labels);
+
+    soggetto07 = imread("../../../face3d/face_07_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto07, 7, images, labels);
+
+    soggetto07 = imread("../../../face3d/face_07_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto07, 7, images, labels);
+
+    soggetto07 = imread("../../../face3d/face_07_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto07, 7, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 08
+
+    Mat soggetto08;
+
+    soggetto08 = imread("../../../face3d/face_08_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto08, 8, images, labels);
+/*
+    soggetto08 = imread("../../../face3d/face_08_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto08, 8, images, labels);
+
+    soggetto08 = imread("../../../face3d/face_08_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto08, 8, images, labels);
+*/
+    soggetto08 = imread("../../../face3d/face_08_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto08, 8, images, labels);
+/*
+    soggetto08 = imread("../../../face3d/face_08_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto08, 8, images, labels);
+*/
+    soggetto08 = imread("../../../face3d/face_08_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto08, 8, images, labels);
+
+    soggetto08 = imread("../../../face3d/face_08_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto08, 8, images, labels);
+/*
+    soggetto08 = imread("../../../face3d/face_08_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto08, 8, images, labels);
+
+    soggetto08 = imread("../../../face3d/face_08_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto08, 8, images, labels);
+
+    soggetto08 = imread("../../../face3d/face_08_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto08, 8, images, labels);
+*/
+    soggetto08 = imread("../../../face3d/face_08_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto08, 8, images, labels);
+/*
+    soggetto08 = imread("../../../face3d/face_08_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto08, 8, images, labels);
+
+    soggetto08 = imread("../../../face3d/face_08_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto08, 8, images, labels);
+*/
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 11
+
+    Mat soggetto11;
+
+    soggetto11 = imread("../../../face3d/face_11_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto11, 11, images, labels);
+/*
+    soggetto11 = imread("../../../face3d/face_11_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto11, 11, images, labels);
+
+    soggetto11 = imread("../../../face3d/face_11_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto11, 11, images, labels);
+*/
+    soggetto11 = imread("../../../face3d/face_11_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto11, 11, images, labels);
+
+    soggetto11 = imread("../../../face3d/face_11_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto11, 11, images, labels);
+
+    soggetto11 = imread("../../../face3d/face_11_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto11, 11, images, labels);
+
+    soggetto11 = imread("../../../face3d/face_11_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto11, 11, images, labels);
+/*
+    soggetto11 = imread("../../../face3d/face_11_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto11, 11, images, labels);
+*/
+    soggetto11 = imread("../../../face3d/face_11_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto11, 11, images, labels);
+
+    soggetto11 = imread("../../../face3d/face_11_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto11, 11, images, labels);
+
+    soggetto11 = imread("../../../face3d/face_11_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto11, 11, images, labels);
+
+    soggetto11 = imread("../../../face3d/face_11_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto11, 11, images, labels);
+
+    soggetto11 = imread("../../../face3d/face_11_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto11, 11, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 12
+
+    Mat soggetto12;
+
+    soggetto12 = imread("../../../face3d/face_12_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto12, 12, images, labels);
+/*
+    soggetto12 = imread("../../../face3d/face_12_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto12, 12, images, labels);
+
+    soggetto12 = imread("../../../face3d/face_12_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto12, 12, images, labels);
+
+    soggetto12 = imread("../../../face3d/face_12_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto12, 12, images, labels);
+*/
+    soggetto12 = imread("../../../face3d/face_12_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto12, 12, images, labels);
+
+    soggetto12 = imread("../../../face3d/face_12_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto12, 12, images, labels);
+
+    soggetto12 = imread("../../../face3d/face_12_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto12, 12, images, labels);
+/*
+    soggetto12 = imread("../../../face3d/face_12_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto12, 12, images, labels);
+*/
+    soggetto12 = imread("../../../face3d/face_12_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto12, 12, images, labels);
+
+    soggetto12 = imread("../../../face3d/face_12_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto12, 12, images, labels);
+/*
+    soggetto12 = imread("../../../face3d/face_12_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto12, 12, images, labels);
+*/
+    soggetto12 = imread("../../../face3d/face_12_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto12, 12, images, labels);
+
+    soggetto12 = imread("../../../face3d/face_12_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto12, 12, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 13
+
+    Mat soggetto13;
+
+    soggetto13 = imread("../../../face3d/face_13_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto13, 13, images, labels);
+/*
+    soggetto13 = imread("../../../face3d/face_13_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto13, 13, images, labels);
+
+    soggetto13 = imread("../../../face3d/face_13_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto13, 13, images, labels);
+*/
+    soggetto13 = imread("../../../face3d/face_13_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto13, 13, images, labels);
+/*
+    soggetto13 = imread("../../../face3d/face_13_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto13, 13, images, labels);
+*/
+    soggetto13 = imread("../../../face3d/face_13_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto13, 13, images, labels);
+
+    soggetto13 = imread("../../../face3d/face_13_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto13, 13, images, labels);
+/*
+    soggetto13 = imread("../../../face3d/face_13_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto13, 13, images, labels);
+*/
+    soggetto13 = imread("../../../face3d/face_13_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto13, 13, images, labels);
+
+    soggetto13 = imread("../../../face3d/face_13_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto13, 13, images, labels);
+
+    soggetto13 = imread("../../../face3d/face_13_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto13, 13, images, labels);
+
+    soggetto13 = imread("../../../face3d/face_13_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto13, 13, images, labels);
+
+    soggetto13 = imread("../../../face3d/face_13_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto13, 13, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 14
+
+    Mat soggetto14;
+
+    soggetto14 = imread("../../../face3d/face_14_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto14, 14, images, labels);
+
+    soggetto14 = imread("../../../face3d/face_14_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto14, 14, images, labels);
+
+    soggetto14 = imread("../../../face3d/face_14_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto14, 14, images, labels);
+
+    soggetto14 = imread("../../../face3d/face_14_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto14, 14, images, labels);
+
+    soggetto14 = imread("../../../face3d/face_14_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto14, 14, images, labels);
+
+    soggetto14 = imread("../../../face3d/face_14_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto14, 14, images, labels);
+
+    soggetto14 = imread("../../../face3d/face_14_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto14, 14, images, labels);
+
+    soggetto14 = imread("../../../face3d/face_14_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto14, 14, images, labels);
+
+    soggetto14 = imread("../../../face3d/face_14_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto14, 14, images, labels);
+
+    soggetto14 = imread("../../../face3d/face_14_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto14, 14, images, labels);
+
+    soggetto14 = imread("../../../face3d/face_14_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto14, 14, images, labels);
+
+    soggetto14 = imread("../../../face3d/face_14_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto14, 14, images, labels);
+
+    soggetto14 = imread("../../../face3d/face_14_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto14, 14, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 15
+
+    Mat soggetto15;
+
+    soggetto15 = imread("../../../face3d/face_15_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto15, 15, images, labels);
+/*
+    soggetto15 = imread("../../../face3d/face_15_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto15, 15, images, labels);
+
+    soggetto15 = imread("../../../face3d/face_15_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto15, 15, images, labels);
+*/
+    soggetto15 = imread("../../../face3d/face_15_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto15, 15, images, labels);
+
+    soggetto15 = imread("../../../face3d/face_15_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto15, 15, images, labels);
+
+    soggetto15 = imread("../../../face3d/face_15_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto15, 15, images, labels);
+
+    soggetto15 = imread("../../../face3d/face_15_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto15, 15, images, labels);
+
+    soggetto15 = imread("../../../face3d/face_15_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto15, 15, images, labels);
+
+    soggetto15 = imread("../../../face3d/face_15_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto15, 15, images, labels);
+
+    soggetto15 = imread("../../../face3d/face_15_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto15, 15, images, labels);
+
+    soggetto15 = imread("../../../face3d/face_15_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto15, 15, images, labels);
+
+    soggetto15 = imread("../../../face3d/face_15_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto15, 15, images, labels);
+/*
+    soggetto15 = imread("../../../face3d/face_15_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto15, 15, images, labels);
+*/
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 16
+
+    Mat soggetto16;
+
+    soggetto16 = imread("../../../face3d/face_16_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto16, 16, images, labels);
+
+    soggetto16 = imread("../../../face3d/face_16_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto16, 16, images, labels);
+
+    soggetto16 = imread("../../../face3d/face_16_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto16, 16, images, labels);
+
+    soggetto16 = imread("../../../face3d/face_16_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto16, 16, images, labels);
+
+    soggetto16 = imread("../../../face3d/face_16_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto16, 16, images, labels);
+
+    soggetto16 = imread("../../../face3d/face_16_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto16, 16, images, labels);
+
+    soggetto16 = imread("../../../face3d/face_16_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto16, 16, images, labels);
+
+    soggetto16 = imread("../../../face3d/face_16_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto16, 16, images, labels);
+
+    soggetto16 = imread("../../../face3d/face_16_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto16, 16, images, labels);
+
+    soggetto16 = imread("../../../face3d/face_16_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto16, 16, images, labels);
+
+    soggetto16 = imread("../../../face3d/face_16_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto16, 16, images, labels);
+
+    soggetto16 = imread("../../../face3d/face_16_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto16, 16, images, labels);
+
+    soggetto16 = imread("../../../face3d/face_16_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto16, 16, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 17
+
+    Mat soggetto17;
+
+    soggetto17 = imread("../../../face3d/face_17_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto17, 17, images, labels);
+/*
+    soggetto17 = imread("../../../face3d/face_17_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto17, 17, images, labels);
+*/
+    soggetto17 = imread("../../../face3d/face_17_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto17, 17, images, labels);
+
+    soggetto17 = imread("../../../face3d/face_17_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto17, 17, images, labels);
+/*
+    soggetto17 = imread("../../../face3d/face_17_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto17, 17, images, labels);
+*/
+    soggetto17 = imread("../../../face3d/face_17_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto17, 17, images, labels);
+
+ /*   soggetto17 = imread("../../../face3d/face_17_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto17, 17, images, labels);
+
+    soggetto17 = imread("../../../face3d/face_17_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto17, 17, images, labels);
+*/
+    soggetto17 = imread("../../../face3d/face_17_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto17, 17, images, labels);
+
+    soggetto17 = imread("../../../face3d/face_17_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto17, 17, images, labels);
+/*
+    soggetto17 = imread("../../../face3d/face_17_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto17, 17, images, labels);
+
+    soggetto17 = imread("../../../face3d/face_17_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto17, 17, images, labels);
+
+    soggetto17 = imread("../../../face3d/face_17_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto17, 17, images, labels);
+*/
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 18
+
+    Mat soggetto18;
+
+    soggetto18 = imread("../../../face3d/face_18_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto18, 18, images, labels);
+
+    soggetto18 = imread("../../../face3d/face_18_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto18, 18, images, labels);
+
+    soggetto18 = imread("../../../face3d/face_18_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto18, 18, images, labels);
+/*
+    soggetto18 = imread("../../../face3d/face_18_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto18, 18, images, labels);
+
+    soggetto18 = imread("../../../face3d/face_18_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto18, 18, images, labels);
+*/
+    soggetto18 = imread("../../../face3d/face_18_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto18, 18, images, labels);
+
+    soggetto18 = imread("../../../face3d/face_18_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto18, 18, images, labels);
+
+    soggetto18 = imread("../../../face3d/face_18_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto18, 18, images, labels);
+
+    soggetto18 = imread("../../../face3d/face_18_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto18, 18, images, labels);
+
+    soggetto18 = imread("../../../face3d/face_18_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto18, 18, images, labels);
+
+ /*   soggetto18 = imread("../../../face3d/face_18_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto18, 18, images, labels);
+*/
+    soggetto18 = imread("../../../face3d/face_18_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto18, 18, images, labels);
+
+    soggetto18 = imread("../../../face3d/face_18_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto18, 18, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 19
+
+    Mat soggetto19;
+
+    soggetto19 = imread("../../../face3d/face_19_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto19, 19, images, labels);
+
+    soggetto19 = imread("../../../face3d/face_19_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto19, 19, images, labels);
+/*
+    soggetto19 = imread("../../../face3d/face_19_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto19, 19, images, labels);
+*/
+    soggetto19 = imread("../../../face3d/face_19_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto19, 19, images, labels);
+
+    soggetto19 = imread("../../../face3d/face_19_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto19, 19, images, labels);
+
+    soggetto19 = imread("../../../face3d/face_19_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto19, 19, images, labels);
+
+    soggetto19 = imread("../../../face3d/face_19_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto19, 19, images, labels);
+
+/*    soggetto19 = imread("../../../face3d/face_19_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto19, 19, images, labels);
+
+    soggetto19 = imread("../../../face3d/face_19_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto19, 19, images, labels);
+*/
+    soggetto19 = imread("../../../face3d/face_19_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto19, 19, images, labels);
+/*
+    soggetto19 = imread("../../../face3d/face_19_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto19, 19, images, labels);
+
+    soggetto19 = imread("../../../face3d/face_19_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto19, 19, images, labels);
+*/
+    soggetto19 = imread("../../../face3d/face_19_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto19, 19, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 20
+
+    Mat soggetto20;
+
+    soggetto20 = imread("../../../face3d/face_20_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto20, 20, images, labels);
+/*
+    soggetto20 = imread("../../../face3d/face_20_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto20, 20, images, labels);
+
+    soggetto20 = imread("../../../face3d/face_20_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto20, 20, images, labels);
+
+    soggetto20 = imread("../../../face3d/face_20_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto20, 20, images, labels);
+*/
+    soggetto20 = imread("../../../face3d/face_20_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto20, 20, images, labels);
+
+    soggetto20 = imread("../../../face3d/face_20_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto20, 20, images, labels);
+
+    soggetto20 = imread("../../../face3d/face_20_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto20, 20, images, labels);
+/*
+    soggetto20 = imread("../../../face3d/face_20_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto20, 20, images, labels);
+
+    soggetto20 = imread("../../../face3d/face_20_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto20, 20, images, labels);
+
+    soggetto20 = imread("../../../face3d/face_20_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto20, 20, images, labels);
+
+    soggetto20 = imread("../../../face3d/face_20_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto20, 20, images, labels);
+*/
+    soggetto20 = imread("../../../face3d/face_20_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto20, 20, images, labels);
+/*
+    soggetto20 = imread("../../../face3d/face_20_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto20, 20, images, labels);
+*/
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 21
+
+    Mat soggetto21;
+
+    soggetto21 = imread("../../../face3d/face_21_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto21, 21, images, labels);
+
+    soggetto21 = imread("../../../face3d/face_21_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto21, 21, images, labels);
+
+    soggetto21 = imread("../../../face3d/face_21_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto21, 21, images, labels);
+
+    soggetto21 = imread("../../../face3d/face_21_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto21, 21, images, labels);
+
+    soggetto21 = imread("../../../face3d/face_21_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto21, 21, images, labels);
+/*
+    soggetto21 = imread("../../../face3d/face_21_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto21, 21, images, labels);
+
+    soggetto21 = imread("../../../face3d/face_21_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto21, 21, images, labels);
+
+    soggetto21 = imread("../../../face3d/face_21_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto21, 21, images, labels);
+
+    soggetto21 = imread("../../../face3d/face_21_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto21, 21, images, labels);
+*/
+    soggetto21 = imread("../../../face3d/face_21_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto21, 21, images, labels);
+/*
+    soggetto21 = imread("../../../face3d/face_21_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto21, 21, images, labels);
+
+    soggetto21 = imread("../../../face3d/face_21_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto21, 21, images, labels);
+*/
+    soggetto21 = imread("../../../face3d/face_21_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto21, 21, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 22
+
+    Mat soggetto22;
+
+    soggetto22 = imread("../../../face3d/face_22_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto22, 22, images, labels);
+
+    soggetto22 = imread("../../../face3d/face_22_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto22, 22, images, labels);
+/*
+    soggetto22 = imread("../../../face3d/face_22_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto22, 22, images, labels);
+*/
+    soggetto22 = imread("../../../face3d/face_22_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto22, 22, images, labels);
+
+    soggetto22 = imread("../../../face3d/face_22_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto22, 22, images, labels);
+
+    soggetto22 = imread("../../../face3d/face_22_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto22, 22, images, labels);
+
+    soggetto22 = imread("../../../face3d/face_22_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto22, 22, images, labels);
+
+    soggetto22 = imread("../../../face3d/face_22_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto22, 22, images, labels);
+
+    soggetto22 = imread("../../../face3d/face_22_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto22, 22, images, labels);
+
+    soggetto22 = imread("../../../face3d/face_22_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto22, 22, images, labels);
+
+    soggetto22 = imread("../../../face3d/face_22_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto22, 22, images, labels);
+
+    soggetto22 = imread("../../../face3d/face_22_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto22, 22, images, labels);
+
+    soggetto22 = imread("../../../face3d/face_22_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto22, 22, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 23
+
+    Mat soggetto23;
+
+    soggetto23 = imread("../../../face3d/face_23_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto23, 23, images, labels);
+
+ /*   soggetto23 = imread("../../../face3d/face_23_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto23, 23, images, labels);
+
+    soggetto23 = imread("../../../face3d/face_23_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto23, 23, images, labels);
+*/
+    soggetto23 = imread("../../../face3d/face_23_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto23, 23, images, labels);
+
+    soggetto23 = imread("../../../face3d/face_23_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto23, 23, images, labels);
+
+    soggetto23 = imread("../../../face3d/face_23_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto23, 23, images, labels);
+
+    soggetto23 = imread("../../../face3d/face_23_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto23, 23, images, labels);
+/*
+    soggetto23 = imread("../../../face3d/face_23_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto23, 23, images, labels);
+*/
+    soggetto23 = imread("../../../face3d/face_23_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto23, 23, images, labels);
+
+    soggetto23 = imread("../../../face3d/face_23_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto23, 23, images, labels);
+
+    soggetto23 = imread("../../../face3d/face_23_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto23, 23, images, labels);
+
+    soggetto23 = imread("../../../face3d/face_23_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto23, 23, images, labels);
+
+    soggetto23 = imread("../../../face3d/face_23_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto23, 23, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 24
+
+    Mat soggetto24;
+
+    soggetto24 = imread("../../../face3d/face_24_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto24, 24, images, labels);
+
+    soggetto24 = imread("../../../face3d/face_24_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto24, 24, images, labels);
+/*
+    soggetto24 = imread("../../../face3d/face_24_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto24, 24, images, labels);
+*/
+    soggetto24 = imread("../../../face3d/face_24_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto24, 24, images, labels);
+
+    soggetto24 = imread("../../../face3d/face_24_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto24, 24, images, labels);
+
+    soggetto24 = imread("../../../face3d/face_24_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto24, 24, images, labels);
+
+    soggetto24 = imread("../../../face3d/face_24_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto24, 24, images, labels);
+
+    soggetto24 = imread("../../../face3d/face_24_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto24, 24, images, labels);
+
+    soggetto24 = imread("../../../face3d/face_24_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto24, 24, images, labels);
+
+    soggetto24 = imread("../../../face3d/face_24_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto24, 24, images, labels);
+
+    soggetto24 = imread("../../../face3d/face_24_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto24, 24, images, labels);
+
+    soggetto24 = imread("../../../face3d/face_24_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto24, 24, images, labels);
+
+    soggetto24 = imread("../../../face3d/face_24_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto24, 24, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 25
+
+    Mat soggetto25;
+
+    soggetto25 = imread("../../../face3d/face_25_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto25, 25, images, labels);
+
+    soggetto25 = imread("../../../face3d/face_25_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto25, 25, images, labels);
+
+ /*   soggetto25 = imread("../../../face3d/face_25_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto25, 25, images, labels);
+*/
+    soggetto25 = imread("../../../face3d/face_25_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto25, 25, images, labels);
+
+    soggetto25 = imread("../../../face3d/face_25_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto25, 25, images, labels);
+
+    soggetto25 = imread("../../../face3d/face_25_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto25, 25, images, labels);
+
+    soggetto25 = imread("../../../face3d/face_25_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto25, 25, images, labels);
+
+    soggetto25 = imread("../../../face3d/face_25_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto25, 25, images, labels);
+
+    soggetto25 = imread("../../../face3d/face_25_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto25, 25, images, labels);
+
+    soggetto25 = imread("../../../face3d/face_25_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto25, 25, images, labels);
+
+    soggetto25 = imread("../../../face3d/face_25_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto25, 25, images, labels);
+
+    soggetto25 = imread("../../../face3d/face_25_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto25, 25, images, labels);
+
+    soggetto25 = imread("../../../face3d/face_25_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto25, 25, images, labels);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //soggetto 26
+
+    Mat soggetto26;
+
+    soggetto26 = imread("../../../face3d/face_26_trained3/facciaProva0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto26, 26, images, labels);
+
+    soggetto26 = imread("../../../face3d/face_26_trained3/facciaProva1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto26, 26, images, labels);
+
+    soggetto26 = imread("../../../face3d/face_26_trained3/facciaProva2.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto26, 26, images, labels);
+
+    soggetto26 = imread("../../../face3d/face_26_trained3/facciaProva3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto26, 26, images, labels);
+
+    soggetto26 = imread("../../../face3d/face_26_trained3/facciaProva4.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto26, 26, images, labels);
+
+    soggetto26 = imread("../../../face3d/face_26_trained3/facciaProva5.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto26, 26, images, labels);
+
+    soggetto26 = imread("../../../face3d/face_26_trained3/facciaProva6.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto26, 26, images, labels);
+/*
+    soggetto26 = imread("../../../face3d/face_26_trained3/facciaProva7.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto26, 26, images, labels);
+*/
+    soggetto26 = imread("../../../face3d/face_26_trained3/facciaProva8.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto26, 26, images, labels);
+
+    soggetto26 = imread("../../../face3d/face_26_trained3/facciaProva9.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto26, 26, images, labels);
+
+    soggetto26 = imread("../../../face3d/face_26_trained3/facciaProva10.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto26, 26, images, labels);
+
+    soggetto26 = imread("../../../face3d/face_26_trained3/facciaProva11.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto26, 26, images, labels);
+
+    soggetto26 = imread("../../../face3d/face_26_trained3/facciaProva12.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    pushPreProcImg(soggetto26, 26, images, labels);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -568,7 +1605,7 @@ Ptr<FaceRecognizer> train()
 
      // Use the new FaceRecognizer class in OpenCV's "contrib" module:
      // Requires OpenCV v2.4.1 or later (from June 2012), otherwise the FaceRecognizer will not compile or run!
-     model = Algorithm::create<FaceRecognizer>("FaceRecognizer.Eigenfaces");
+     model = Algorithm::create<FaceRecognizer>("FaceRecognizer.Eigenfaces");   //Fisherfaces-Eigenfaces
      if (model.empty()) {
      cerr << "ERROR: The FaceRecognizer algorithm [" << "FaceRecognizer.Eigenfaces" << "] is not available in your version of OpenCV. Please update to OpenCV v2.4.1 or newer." << endl;
      exit(1);
@@ -627,8 +1664,29 @@ double getSimilarity(const Mat A, const Mat B)
 int main(int argc, char *argv[])
 {
 
-      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //vettore contenente le corrette etichette:
+    int correctLabel[38];
 
+    for (int i = 0; i< 38; i++) {correctLabel[i] = -1;} //inizializzo a -1 (unknown operson);
+
+    correctLabel[2] = 1;
+    correctLabel[3] = 10;
+    correctLabel[4] = 0;
+    correctLabel[5] = 9;
+
+    correctLabel[21] = 1;
+    correctLabel[22] = 10;
+    correctLabel[23] = 0;
+    correctLabel[24] = 9;
+/*
+    for (int i=0; i<38; i++)
+    {
+        cout << "[" << i <<"] : "<< correctLabel[i] << endl;
+    }
+*/
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //il primo argomento della linea di comando seleziona il set da testare:
       int dataset = atoi(argv[1]);
 
       //creo l'oggetto Facerecognizer già trainato con le facce del set di persone da riconoscere:
@@ -639,6 +1697,8 @@ int main(int argc, char *argv[])
 
       int label[vec.size()] ;
       double confidence[vec.size()];
+
+      int FPunknown=0, rank1=0;
 
       for (int i = 0; i < vec.size(); i++)
       {
@@ -652,16 +1712,33 @@ int main(int argc, char *argv[])
 
           // Verify whether the reconstructed face looks like the preprocessed face, otherwise it is probably an unknown person.
           double similarity = getSimilarity(vec[i], reconstructedFace);
+
+          if (similarity > 0.095) label[i] = -1;
+
+
+          //se devo predirre -1 ma ho un label =! da -1, aumento il contatore di falsi positivi:
+          /*
+           * rank-1 %: 0.625
+           *  FP-unknown %: 0.4
+           *
+           * */
+          if (correctLabel[i] == -1 && label[i] != -1) FPunknown++;
+          if (correctLabel[i] != -1 && label[i] == correctLabel[i]) rank1++;
+
+/*
           int falso = 0;
-          if (similarity > 0.5) {
-              falso = -1;
-              // Unknown person.
+          if (similarity > 0.5)
+          {
+              falso = -1;  // Unknown person.
           }
+*/
 
-
-          cout << "persona " << i << ": " << label[i] << "; confidenza: " << confidence[i] << "similarità: " << falso << endl;
+          cout << "foto " << i << ": asp. id "<< correctLabel[i] << " Pred. label: " << label[i] << "; confidenza: " << confidence[i] << "similarità: " << similarity << endl;
 
       }
+
+      cout << "rank-1 %: " << (double)rank1/8  << endl;
+      cout << "FP-unknown %: " << (double)FPunknown/30 << endl;
 
 
 
