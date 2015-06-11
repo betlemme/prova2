@@ -1663,31 +1663,47 @@ double getSimilarity(const Mat A, const Mat B)
 
 int main(int argc, char *argv[])
 {
+    //il primo argomento della linea di comando seleziona il set da testare:
+    int dataset = atoi(argv[1]);
+
+    int numOfTrust;     //numero di soggetti autorizzati nel dataset
+    int numOfUnknown;   //numero di persone non autorizzate nel dataset
+    int arrayLength;    //numero di immagini del dataset
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //vettore contenente le corrette etichette:
-    int correctLabel[38];
 
-    for (int i = 0; i< 38; i++) {correctLabel[i] = -1;} //inizializzo a -1 (unknown operson);
+        int correctLabel[38];
+        numOfTrust = 8;
+        numOfUnknown = 30;
+        arrayLength = 38;
 
-    correctLabel[2] = 1;
-    correctLabel[3] = 10;
-    correctLabel[4] = 0;
-    correctLabel[5] = 9;
+        for (int i = 0; i< 38; i++) {correctLabel[i] = -1;} //inizializzo a -1 (unknown operson);
 
-    correctLabel[21] = 1;
-    correctLabel[22] = 10;
-    correctLabel[23] = 0;
-    correctLabel[24] = 9;
-/*
-    for (int i=0; i<38; i++)
+        correctLabel[2] = 1;
+        correctLabel[3] = 10;
+        correctLabel[4] = 0;
+        correctLabel[5] = 9;
+
+        correctLabel[21] = 1;
+        correctLabel[22] = 10;
+        correctLabel[23] = 0;
+        correctLabel[24] = 9;
+        /*
+        for (int i=0; i<38; i++)
+        {
+            cout << "[" << i <<"] : "<< correctLabel[i] << endl;
+        }
+        */
+
+    if (dataset == 2 || dataset == 4)
     {
-        cout << "[" << i <<"] : "<< correctLabel[i] << endl;
+        numOfTrust = 4;
+        numOfUnknown = 15;
+        arrayLength = 19;       //cioè considero solo le etichette [0-18]
     }
-*/
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      //il primo argomento della linea di comando seleziona il set da testare:
-      int dataset = atoi(argv[1]);
+
 
       //creo l'oggetto Facerecognizer già trainato con le facce del set di persone da riconoscere:
       Ptr<FaceRecognizer> model = train();
@@ -1713,13 +1729,13 @@ int main(int argc, char *argv[])
           // Verify whether the reconstructed face looks like the preprocessed face, otherwise it is probably an unknown person.
           double similarity = getSimilarity(vec[i], reconstructedFace);
 
-          if (similarity > 0.095) label[i] = -1;
-
+          if (similarity > 0.095) label[i] = -1;        //considero la persona come estranea
 
           //se devo predirre -1 ma ho un label =! da -1, aumento il contatore di falsi positivi:
           /*
-           * rank-1 %: 0.625
-           *  FP-unknown %: 0.4
+           * DATASET 1:         DATASET 2:          DATASET 3:          DATASET 4:
+           * rank-1%: 0.625     rank-1%: 0.5        rank-1%: 0.375      rank-1%: 0.25
+           * FP-unknown%: 0.4   FP-unknown%: 0.53   FP-unknown%: 0.3    FP-unknown%: 0.0666
            *
            * */
           if (correctLabel[i] == -1 && label[i] != -1) FPunknown++;
@@ -1737,8 +1753,8 @@ int main(int argc, char *argv[])
 
       }
 
-      cout << "rank-1 %: " << (double)rank1/8  << endl;
-      cout << "FP-unknown %: " << (double)FPunknown/30 << endl;
+      cout << "rank-1 %: " << (double)rank1/numOfTrust  << endl;
+      cout << "FP-unknown %: " << (double)FPunknown/numOfUnknown << endl;
 
 
 
