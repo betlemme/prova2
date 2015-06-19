@@ -52,8 +52,8 @@ main (int argc, char** argv)
     pcl::io::loadPCDFile("alto.pcd", *cloud6); //"../dataset/people/2.pcd"
     pcl::io::loadPCDFile("basso.pcd", *cloud3); //"../dataset/people/2.pcd"
     pcl::io::loadPCDFile("destra.pcd", *cloud5); //"../dataset/people/2.pcd"        //#4 è targhet!!!!!!
-    pcl::io::loadPCDFile("dritta.pcd", *cloud4); //"../dataset/people/2.pcd"
-    pcl::io::loadPCDFile("sinistra.pcd", *cloud2); //"../dataset/people/2.pcd"
+    pcl::io::loadPCDFile("004_00_cloud.pcd", *cloud4); //"../dataset/people/2.pcd"
+    pcl::io::loadPCDFile("dritta.pcd", *cloud2); //"../dataset/people/2.pcd"
 /*
     pcl::io::loadPCDFile("robot_6.pcd", *cloud6); //"../dataset/people/2.pcd"
     pcl::io::loadPCDFile("robot_2.pcd", *cloud2); //"../dataset/people/2.pcd"

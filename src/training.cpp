@@ -18,11 +18,8 @@ Mat ellipseMask(Mat face);
 #include <cstdlib>
 #include<stdio.h>
 
-/* Crea e salva nella rispettiva cartella le facce estrapolate dal dataset di training
- *
- *
- *
- *
+/*
+ * Crea e salva nella rispettiva cartella le facce estrapolate dal dataset di training
  *
  *
  *

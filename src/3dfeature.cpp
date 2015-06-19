@@ -324,7 +324,7 @@ int main()
         {
             return -1;
         }
-    if (pcl::io::loadPCDFile<pcl::PointXYZ>("robot_3.pcd", *cloudQuery) != 0)
+    if (pcl::io::loadPCDFile<pcl::PointXYZ>("dritta.pcd", *cloudQuery) != 0)
         {
             return -1;
         }
