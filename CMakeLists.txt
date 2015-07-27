@@ -56,6 +56,7 @@ target_link_libraries(training ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 
 add_executable(ex5
         src/ex5.cpp
+        #src/detection.cpp
         )
 
 target_link_libraries(ex5 ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
@@ -87,9 +88,12 @@ add_executable(FaceRecognition2
 
 target_link_libraries(FaceRecognition2 ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 
+add_executable(3dfaceDetect
+        src/3dfaceDetect.cpp
+        src/detection.cpp
+        )
 
-
-
+target_link_libraries(3dfaceDetect ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 
 
 

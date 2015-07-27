@@ -112,7 +112,7 @@ void visualize_correspondences (const pcl::PointCloud<pcl::PointXYZ>::Ptr points
   // Draw lines between the best corresponding points
   for (size_t i = 0; i < keypoints_left->size (); ++i)
   {
-    if (correspondence_scores[i] > median_score)   //if (correspondence_scores[i] > median_score)
+    if (correspondence_scores[i] > 50)   //if (correspondence_scores[i] > median_score)
     {
       continue; // Don't draw weak correspondences
     }
@@ -287,6 +287,10 @@ pcl::CorrespondencesPtr match(pcl::PointCloud<pcl::FPFHSignature33>::Ptr scene, 
             {
                 pcl::Correspondence correspondence(neighbors[0], static_cast<int>(i), squaredDistances[0]);
                 correspondences->push_back(correspondence);
+
+                //correspondences_out[i] = neighbors[0];
+                //correspondence_scores_out[i] = squaredDistances[0];
+
             }
             //debug: aggiungo le corrispondenze in un vetttore di interi, per disegnarle
             std::cout << "squaredDistances " << i << ": " << squaredDistances[0] <<std::endl;
@@ -349,44 +353,7 @@ int main()
     corrispondences = match(feature, feature2, correspondences_out, correspondence_scores_out);
     visualize_correspondences (cloudData, kp, cloudQuery, kp2, correspondences_out, correspondence_scores_out);
 
+    cout << "consistenza..." << endl;
     consistency(kp2, kp, corrispondences);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
