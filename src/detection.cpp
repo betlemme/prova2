@@ -81,6 +81,93 @@ Mat ellipseMask(Mat face)
 
 }
 
+Rect detectRect(Mat source)
+{
+    Rect out;
+    //carico l'img in b/n (gli passo già una img in b/n):
+    Mat img = source;
+
+    char const * frontaleLBP = "/home/enrico/opencv-2.4.9/data/lbpcascades/lbpcascade_frontalface.xml";
+    char const * frontaleHAAR = "/home/enrico/opencv-2.4.9/data/haarcascades/haarcascade_frontalface_default.xml";
+    char const * profilo ="/home/enrico/opencv-2.4.9/data/haarcascades/haarcascade_profileface.xml";
+
+    //carico il descrittore pre il face detector ( 1 -> frontale , 2 -> profilo)
+    char const * faceCascadeFilename;
+
+    faceCascadeFilename = frontaleHAAR;
+
+    CascadeClassifier faceDetector;
+    try {
+        faceDetector.load(faceCascadeFilename);
+    } catch (cv::Exception e) {}
+    if ( faceDetector.empty() ) {
+        cerr << "ERROR: Couldn't load Face Detector (";
+        cerr << faceCascadeFilename << ")!" << endl;
+        exit(1);
+    }
+    cout << "descrittore caricato: " << faceCascadeFilename <<endl;
+
+/*
+    namedWindow( "Display window", WINDOW_AUTOSIZE );           //per debug
+    imshow( "Display window", img );
+    waitKey(0);
+*/
+
+    //equalizeHist per omogeneizzare il contrasto e la luminosità:
+    Mat equalizedImg;
+    equalizeHist(img, equalizedImg);
+
+
+    // detectMultiScale() per trovare la faccia nell'immagine:
+    int flags = CASCADE_FIND_BIGGEST_OBJECT;    //cerco una sola faccia
+    Size minFeatureSize(90, 90);                //size minima in pixel della faccia
+    float searchScaleFactor = 1.3f;             //su quante scale cercare (1.1 oppure 1.2) piu alto è piu è veloce, ma trova meno facce
+    int minNeighbors = 4;                       //Reliability vs many faces
+    std::vector<Rect> faces;                    //param di uscita, circonda la faccia
+    faceDetector.detectMultiScale(equalizedImg, faces, searchScaleFactor, minNeighbors, flags, minFeatureSize);
+
+    /////////////
+    ///per il detection del dataset test: 90x90, 1.3f, 4
+    ////////////
+    ///per il detection del training 00: 90x90. 1.1f, 4
+    /////////////
+    ///per il detection del training 01-09-10: 90x90. 1.1f, 2
+    //////////////
+
+    if (faces.size() < 1) //non ho trovato una faccia frontale. cerco una faccia di profilo:
+    {
+        cout << "nessuna faccia trovata" << endl;
+
+        // cerco una faccia di profilo
+        faceCascadeFilename = profilo;
+
+        try {
+            faceDetector.load(faceCascadeFilename);
+        } catch (cv::Exception e) {}
+        if ( faceDetector.empty() ) {
+            cerr << "ERROR: Couldn't load Face Detector (";
+            cerr << faceCascadeFilename << ")!" << endl;
+            exit(1);
+        }
+        cout << "descrittore caricato: " << faceCascadeFilename <<endl;
+
+        faceDetector.detectMultiScale(equalizedImg, faces, searchScaleFactor, minNeighbors, flags, minFeatureSize);
+
+        if (faces.size() < 1)
+        {
+            cout << "nessuna faccia di profilo trovata" << endl;
+            return out;
+        }
+
+
+    }
+
+    out = faces[0];
+    cout << "area rect trovato: " << out.area() << endl;
+
+    return out;
+}
+
 Mat detectSimple(Mat source)
 {
     Size size(140,140);//the dst image size,e.g.100x100

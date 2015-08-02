@@ -1563,7 +1563,7 @@ int main(int argc, char *argv[])
           /* stimando la soglia con Similarity:
            * DATASET 1:         DATASET 2:          DATASET 3:          DATASET 4:
            * rank-1%: 0.625     rank-1%: 0.5        rank-1%: 0.375      rank-1%: 0.25
-           * FP-unknown%: 0.4   FP-unknown%: 0.53   FP-unknown%: 0.3    FP-unknown%: 0.0666
+           * FP-unknown%: 0+.4   FP-unknown%: 0.53   FP-unknown%: 0.3    FP-unknown%: 0.0666
            *
            * */
 
